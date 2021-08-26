@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import React from 'react';
-import {BrowerserRouter, Redirect, Route, Switch} from react-router-dom;
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import {connect } from 'react-redux';
 
 import * as actionCreators from './store/actionCreators/index';
@@ -22,13 +22,13 @@ const App = props =>  {
 
   return (
     <div>
-      <BrowerserRouter>
+      <BrowserRouter>
         <Layout>
           {routes}
         </Layout>
-      </BrowerserRouter>
+      </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+export default (App);
