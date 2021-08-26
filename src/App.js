@@ -1,23 +1,32 @@
 import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowerserRouter, Redirect, Route, Switch} from react-router-dom;
+import {connect } from 'react-redux';
 
-function App() {
+import * as actionCreators from './store/actionCreators/index';
+import './App.css';
+import Home from './containers/Home';
+import Game from './containers/Game';
+import Tutorial from './containers/Tutorial';
+import Layout from './components/Layout/Layout';
+
+const App = props =>  {
+
+  let routes = 
+    <Switch>
+      <Route exact path='/' component={Home}></Route>
+      <Route path='/game' component={Game}></Route>
+      <Route path='/tutorial' component={Tutorial}></Route>
+      <Redirect to='/'/>
+    </Switch> 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowerserRouter>
+        <Layout>
+          {routes}
+        </Layout>
+      </BrowerserRouter>
     </div>
   );
 }
