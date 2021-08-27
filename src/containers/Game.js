@@ -1,23 +1,69 @@
 import React from 'react';
 import Button from  '../components/UI/Button/Button';
 import Input from '../components/Input/Input';
+import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
+import ArtistList from '../components/ArtistList/ArtistList';
+
 
 const Game = props => {
-    
-    const inputElement = props => {
-        <input 
-            type='text'
-            placeholder='Artist Name'
-            name='artist'
-            id='artist'
-            onChange={props.changed}
-            value={props.value}
-        />
+
+    const [artistForm, setArtistForm] = useState({
+            value:'',
+            elementType:'input',
+            elementConfig:{
+                type:'text',
+                placeholder:'Artist name'
+            },
+            validation:{
+                required:true
+            },
+            valid:false,
+            touched:false
+    })
+
+    //checks if form valid
+    const [formValid, setFormValid] = useState(false);
+
+    const validHandler = artist => {
+        //if artist exists
+        //api call
     }
 
-    const artistHandler = event => {
+    //form input handler, triggers when submit form
+    const inputHandler = event => {
         event.preventDefault;
+        const tempForm = {...artistForm};
+        tempForm.value = event.target.value;
+        tempForm.touched = true;
+        setArtistForm(tempForm)
+        //redux matches artists
+    }   
 
+    //list will get value from artist form value
+
+    const artistHandler = (event) => {
+        event.preventDefault();
+        let artistName = event.target.value;
+        const newForm = {...artistForm};
+        newForm.value = artistName
+        setArtistForm(newForm)
+        //async operation
+        //redux posts artist
+        //get questions
+        //runs question
+    }
+    
+    const inputElement = () => {
+        <input 
+            inputType={artistForm.elementConfig.type}
+            placeholder={artistForm.elementConfig.placeholder}
+            name='artist'
+            id='artist'
+            changed={(event) => inputHandler(event)}
+            value={artistForm.value}
+            valid={artistForm.valid}
+            touched={artistForm.touched}
+        />
     }
 
     //form valid
@@ -35,9 +81,12 @@ const Game = props => {
                     {inputElement}
                     <Button disabled={!formValid} BtnType='Success'>Submit</Button>
                 </form>
+                {/* artistList gets list of artists from state*/}
+                <ArtistList />
             </div>
         </div>
     )
 }
+
 
 export default Game;
