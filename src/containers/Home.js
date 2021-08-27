@@ -15,24 +15,25 @@ const Home = props => {
     }
 
     const main = props => {
-        <React.Fragment>
+        <>
             <Button clicked={navigatePlay}>Play</Button>
             <Button clicked={navigateTutorial}>Tutorial</Button>
-        </React.Fragment>
+        </>
     }
 
     const team = props => {
-        <React.Fragment>
+        <>
             {/* team members */}
-        </React.Fragment>
+        </>
     }   
 
 
     return (
-        <React.Fragment>
+        <>
+            <h1>WELCOME to the HOME Page!!!! SUCH #WOW</h1>
             <div className='mainSection'>{main}</div>
             <div className='team'>{team}</div>
-        </React.Fragment>
+        </>
     )
 }
 

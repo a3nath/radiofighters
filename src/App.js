@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import React from 'react';
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
-import {connect } from 'react-redux';
 
 import * as actionCreators from './store/actionCreators/index';
 import './App.css';
@@ -14,18 +13,17 @@ const App = props =>  {
 
   let routes = 
     <Switch>
-      <Route exact path='/' component={Home}></Route>
-      <Route path='/game' component={Game}></Route>
-      <Route path='/tutorial' component={Tutorial}></Route>
+      <Route exact path='/' component={Home}/>
+      <Route path='/game' component={Game}/>
+      <Route path='/tutorial' component={Tutorial}/>
       <Redirect to='/'/>
     </Switch> 
 
   return (
     <div>
       <BrowserRouter>
-        <Layout>
+        <Layout/>
           {routes}
-        </Layout>
       </BrowserRouter>
     </div>
   );
