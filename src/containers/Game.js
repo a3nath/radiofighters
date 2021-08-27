@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from  '../components/UI/Button/Button';
 import Input from '../components/Input/Input';
 import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
 import ArtistList from '../components/ArtistList/ArtistList';
-
+import * as actionCreators from '../store/actionCreators/index';
+import { connect } from 'react-redux';
 
 const Game = props => {
 
@@ -31,11 +32,12 @@ const Game = props => {
 
     //form input handler, triggers when submit form
     const inputHandler = event => {
-        event.preventDefault;
+        event.preventDefault();
         const tempForm = {...artistForm};
         tempForm.value = event.target.value;
         tempForm.touched = true;
         setArtistForm(tempForm)
+        props.addArtist(event.target.value)
         //redux matches artists
     }   
 
@@ -43,14 +45,14 @@ const Game = props => {
 
     const artistHandler = (event) => {
         event.preventDefault();
-        let artistName = event.target.value;
         const newForm = {...artistForm};
-        newForm.value = artistName
-        setArtistForm(newForm)
+        newForm.value = event.target.value;
+        setArtistForm(newForm);
         //async operation
         //redux posts artist
         //get questions
         //runs question
+        
     }
     
     const inputElement = () => {
@@ -71,10 +73,9 @@ const Game = props => {
     //value gets updated once ajax call
     //then form is valid => button
 
-    
     return (
         <div>
-            Hello, thsis is Game Page
+            <h1>Hello, thsis is Game Page</h1>
             <div>
                 <form onSubmit={artistHandler}>
                     <label for='artist'>Enter artist Name</label>
@@ -82,11 +83,22 @@ const Game = props => {
                     <Button disabled={!formValid} BtnType='Success'>Submit</Button>
                 </form>
                 {/* artistList gets list of artists from state*/}
-                <ArtistList />
+                {/* <ArtistList /> */}
             </div>
         </div>
-    )
+    );
 }
 
+// const mapStateToProps = state => {
+//     return {
 
-export default Game;
+//     };
+// }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addArtist: (artist) => dispatch(actionCreators.addArtistThunk(artist)) 
+    };
+}
+
+export default connect(null,mapDispatchToProps)(Game);
