@@ -39,6 +39,7 @@ const Game = props => {
         setArtistForm(tempForm)
         props.addArtist(event.target.value)
         //redux matches artists
+        console.log(event.target.value)
     }   
 
     //list will get value from artist form value
@@ -55,30 +56,30 @@ const Game = props => {
         
     }
     
-    const inputElement = () => {
-        <input 
-            inputType={artistForm.elementConfig.type}
-            placeholder={artistForm.elementConfig.placeholder}
-            name='artist'
-            id='artist'
-            changed={(event) => inputHandler(event)}
-            value={artistForm.value}
-            valid={artistForm.valid}
-            touched={artistForm.touched}
-        />
-    }
+    const inputElement = (
+            <Input 
+                inputType={artistForm.elementConfig.type}
+                placeholder={artistForm.elementConfig.placeholder}
+                name='artist'
+                id='artist'
+                changed={(event) => inputHandler(event)}
+                value={artistForm.value}
+                valid={artistForm.valid}
+                touched={artistForm.touched}
+            />
+        )
 
     //form valid
     //create dummy form
     //value gets updated once ajax call
     //then form is valid => button
 
-    return (
-        <div>
+  
+
+    return (<div>
             <h1>Hello, thsis is Game Page</h1>
             <div>
                 <form onSubmit={artistHandler}>
-                    <label for='artist'>Enter artist Name</label>
                     {inputElement}
                     <Button disabled={!formValid} BtnType='Success'>Submit</Button>
                 </form>
