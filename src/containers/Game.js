@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
 import Button from  '../components/UI/Button/Button';
 import Input from '../components/Input/Input';
 import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
 import ArtistList from '../components/ArtistList/ArtistList';
 import * as actionCreators from '../store/actionCreators/index';
-import { connect } from 'react-redux';
+
+
 
 const Game = props => {
 
@@ -20,7 +23,7 @@ const Game = props => {
             },
             valid:false,
             touched:false
-    })
+    });
 
     //checks if form valid
     const [formValid, setFormValid] = useState(false);
@@ -28,7 +31,7 @@ const Game = props => {
     const validHandler = artist => {
         //if artist exists
         //api call
-    }
+    };
 
     //form input handler, triggers when submit form
     const inputHandler = event => {
@@ -37,10 +40,10 @@ const Game = props => {
         tempForm.value = event.target.value;
         tempForm.touched = true;
         setArtistForm(tempForm)
+        //dispatch input typed value to fetch
         props.addArtist(event.target.value)
-        //redux matches artists
         console.log(event.target.value)
-    }   
+    };   
 
     //list will get value from artist form value
 
@@ -50,11 +53,8 @@ const Game = props => {
         newForm.value = event.target.value;
         setArtistForm(newForm);
         //async operation
-        //redux posts artist
-        //get questions
-        //runs question
-        
-    }
+
+    };
     
     const inputElement = (
             <Input 
@@ -63,11 +63,12 @@ const Game = props => {
                 name='artist'
                 id='artist'
                 changed={(event) => inputHandler(event)}
-                value={artistForm.value}
+                //if indicator off (dropdown value not selected otherwise dropdown value from store)
+                value={props.artistSelected ? props.artistEnter : artistForm.value}
                 valid={artistForm.valid}
                 touched={artistForm.touched}
             />
-        )
+    );
 
     //form valid
     //create dummy form
@@ -76,7 +77,8 @@ const Game = props => {
 
   
 
-    return (<div>
+    return (
+        <div>
             <h1>Hello, thsis is Game Page</h1>
             <div>
                 <form onSubmit={artistHandler}>
@@ -90,16 +92,17 @@ const Game = props => {
     );
 }
 
-// const mapStateToProps = state => {
-//     return {
-
-//     };
-// }
+const mapStateToProps = state => {
+    return {
+        artistSel: state.rootReducer.artistSelected,
+        artistEnter: state.rootReducer.artistEnter
+    };
+}
 
 const mapDispatchToProps = dispatch => {
     return {
         addArtist: (artist) => dispatch(actionCreators.addArtistThunk(artist)) 
     };
-}
+};
 
-export default connect(null,mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

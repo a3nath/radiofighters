@@ -26,4 +26,7 @@ export const addArtistThunk = (artist) => {
         )
     }
 }
-// theaudiodb.com/api/v1/json/1/search.php?s=coldplay
+
+export const enterArtist = artist => {
+    return {type: actionTypes.ENTER_ARTIST, artistEnter: artist}
+}
