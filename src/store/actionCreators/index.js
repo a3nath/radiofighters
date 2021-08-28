@@ -5,6 +5,14 @@ const musicApp = {};
 musicApp.audioDBBaseurl = "https://www.theaudiodb.com/api/v1/json";
 musicApp.audioDBAPI = "523532";
 
+export const loading = () => {
+    return {type: actionTypes.LOADING}
+}
+
+export const enterArtist = artist => {
+    return {type: actionTypes.ENTER_ARTIST, artistEnter: artist}
+}
+
 export const addArtist = artist => {
     return {type: actionTypes.ADD_ARTIST ,artist: artist}
 }
@@ -16,6 +24,7 @@ export const submitArtist = artist => {
 export const error = err => {
     return {type:actionTypes.ERROR, errro: err}
 }
+
 
 export const addArtistThunk = (artist) => {
     const url = `${musicApp.audioDBBaseurl}/${musicApp.audioDBAPI}/search.php?s=${artist}`
@@ -38,12 +47,9 @@ export const addArtistThunk = (artist) => {
                     }
             )
             .then(res => res.json())// dispatch(addArtist(res.json()))
-            .then(value => console.log(value.artists))
+            .then(value => dispatch(addArtist(value.artists[0].strArtist)))
             .catch(err => dispatch(error(err)))
             )
         }
 }
 
-export const enterArtist = artist => {
-    return {type: actionTypes.ENTER_ARTIST, artistEnter: artist}
-}

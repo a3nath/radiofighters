@@ -39,7 +39,8 @@ const artistList = props => {
          const resultArtist = newArr.map(artist => {
              return `<li onClick={(event) => inputValHandler(event)} name={artists}><span>${artist}</span></li>`
          })
-     }
+         return resultArtist
+    }
 
     return (
         <ul>

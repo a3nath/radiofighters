@@ -87,6 +87,7 @@ const Game = props => {
                 </form>
                 {/* artistList gets list of artists from state*/}
                 {/* <ArtistList /> */}
+                <ArtistList/>
             </div>
         </div>
     );
