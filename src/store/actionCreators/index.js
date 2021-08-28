@@ -3,7 +3,7 @@ import * as actionTypes from '../actionTypes';
 //API Key
 const musicApp = {};
 musicApp.audioDBBaseurl = "https://www.theaudiodb.com/api/v1/json";
-musicApp.audioDBApi = "1";
+musicApp.audioDBAPI = "523532";
 
 export const addArtist = artist => {
     return {type: actionTypes.ADD_ARTIST ,artist: artist}
@@ -13,18 +13,35 @@ export const submitArtist = artist => {
     return {type: actionTypes.SUBMIT_ARTIST, artist: artist}
 }
 
+export const error = err => {
+    return {type:actionTypes.ERROR, errro: err}
+}
+
 export const addArtistThunk = (artist) => {
-    return (dispath) => {
-        const url = `${musicApp.audioDBBaseurl}/${musicApp.audioDBApi}/search.php?s=${artist}`
-        return(
-            fetch(url)
+    const url = `${musicApp.audioDBBaseurl}/${musicApp.audioDBAPI}/search.php?s=${artist}`
+    return (dispatch) => {
+        return(fetch(url)
             .then(response => {
-                    console.log(response)
-                    // dispath(addArtist(response.json))
-                }
+                    if (response.ok){
+                        return response                    
+                    }//get response but not ok
+                    else {
+                        const error = new Error(`Error ${response.status}: ${response.statusText}`)
+                        error.response = response;
+                        throw error;
+                    }
+                },
+                //if you dont get response
+                error => {
+                        const errMess = new Error(error.message);
+                        throw errMess;
+                    }
             )
-        )
-    }
+            .then(res => res.json())// dispatch(addArtist(res.json()))
+            .then(value => console.log(value.artists))
+            .catch(err => dispatch(error(err)))
+            )
+        }
 }
 
 export const enterArtist = artist => {
