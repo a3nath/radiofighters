@@ -92,12 +92,12 @@ const Game = props => {
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        artistSel: state.rootReducer.artistSelected,
-        artistEnter: state.rootReducer.artistEnter
-    };
-}
+// const mapStateToProps = state => {
+//     return {
+//         artistSel: state.rootReducer.artistSelected,
+//         artistEnter: state.rootReducer.artistEnter
+//     };
+// }
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -105,4 +105,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default connect(null, mapDispatchToProps)(Game);

@@ -14,6 +14,8 @@ const rootReducer = (state = iniState, action ) => {
             return {...state, artist: action.artist, errors:false, loading:false, artistEnter: '', artistSelected: false}
         case(actionTypes.ENTER_ARTIST):
             return{...state, errors:false, loading:false, artistEnter: action.artistEnter, artistSelected:true}
+        case(actionTypes.ERROR):
+            return{...state, error:true, loading: false}
         default:
             return state;
     }
