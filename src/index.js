@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore, compose, applyMiddleware } from 'redux';
+import {createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
-import rootReducer from './store/reducers/rootReducer'
+import artistReducer from './store/reducers/artistReducer';
 import reportWebVitals from './reportWebVitals';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers({artistReducer})
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
