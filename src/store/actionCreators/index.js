@@ -22,7 +22,7 @@ export const submitArtist = artist => {
 }
 
 export const error = err => {
-    return {type:actionTypes.ERROR, errro: err}
+    return {type: actionTypes.ERROR, errro: err}
 }
 
 

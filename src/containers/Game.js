@@ -41,7 +41,7 @@ const Game = props => {
         tempForm.touched = true;
         setArtistForm(tempForm)
         //dispatch input typed value to fetch
-        props.addArtist(event.target.value)
+        //props.addArtist(event.target.value)
         console.log(event.target.value)
     };   
 
@@ -52,6 +52,7 @@ const Game = props => {
         const newForm = {...artistForm};
         newForm.value = event.target.value;
         setArtistForm(newForm);
+        props.addArtist(event.target.value);
         //async operation
 
     };
@@ -62,9 +63,10 @@ const Game = props => {
                 placeholder={artistForm.elementConfig.placeholder}
                 name='artist'
                 id='artist'
-                changed={(event) => inputHandler(event)}
+                changed={inputHandler}
                 //if indicator off (dropdown value not selected otherwise dropdown value from store)
-                value={props.artistSelected ? props.artistEnter : artistForm.value}
+                // value={props.artistSelected ? props.artistEnter : artistForm.value}
+                value = {artistForm.value}
                 valid={artistForm.valid}
                 touched={artistForm.touched}
             />
@@ -95,8 +97,8 @@ const Game = props => {
 
 // const mapStateToProps = state => {
 //     return {
-//         artistSel: state.rootReducer.artistSelected,
-//         artistEnter: state.rootReducer.artistEnter
+//         artistSel: state.artistReducer.artistSelected,
+//         artistEnter: state.artistReducer.artistEnter
 //     };
 // }
 
