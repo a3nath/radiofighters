@@ -47,7 +47,10 @@ export const addArtistThunk = (artist) => {
                     }
             )
             .then(res => res.json())// dispatch(addArtist(res.json()))
-            .then(value => dispatch(addArtist(value.artists[0].strArtist)))
+            //artist object
+            .then(value => dispatch(addArtist([value.artists[0]]))
+                // dispatch(addArtist(value.artists[0].strArtist))
+            )
             .catch(err => dispatch(error(err)))
             )
         }

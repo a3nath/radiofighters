@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Button from  '../components/UI/Button/Button';
 import Input from '../components/Input/Input';
 import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
-import ArtistList from '../components/ArtistList/ArtistList';
+import Trivia from '../components/Trivia/Trivia';
 import * as actionCreators from '../store/actionCreators/index';
 
 
@@ -47,14 +47,13 @@ const Game = props => {
 
     //list will get value from artist form value
 
-    const artistHandler = (event) => {
+    const artistHandler = event => {
         event.preventDefault();
-        const newForm = {...artistForm};
-        newForm.value = event.target.value;
-        setArtistForm(newForm);
-        props.addArtist(event.target.value);
-        //async operation
-
+        console.log(artistForm.value)
+        // const newForm = {...artistForm};
+        // newForm.value = event.target.value;
+        // setArtistForm(newForm);
+        props.addArtist(artistForm.value);
     };
     
     const inputElement = (
@@ -77,7 +76,6 @@ const Game = props => {
     //value gets updated once ajax call
     //then form is valid => button
 
-  
 
     return (
         <div>
@@ -88,19 +86,18 @@ const Game = props => {
                     <Button disabled={!formValid} BtnType='Success'>Submit</Button>
                 </form>
                 {/* artistList gets list of artists from state*/}
-                {/* <ArtistList /> */}
-                <ArtistList/>
+                <Trivia/>
+                {/* <ArtistList/> */}
             </div>
         </div>
     );
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         artistSel: state.artistReducer.artistSelected,
-//         artistEnter: state.artistReducer.artistEnter
-//     };
-// }
+const mapStateToProps = state => {
+    return {
+        year: state.artistReducer.artist[0]
+    };
+}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -108,4 +105,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
