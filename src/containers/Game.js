@@ -77,6 +77,12 @@ const Game = props => {
     //then form is valid => button
 
 
+    let trivia = null
+
+    if (props.artist){
+        trivia = <Trivia artist={props.artist}/>
+    }
+
     return (
         <div>
             <h1>Hello, thsis is Game Page</h1>
@@ -85,8 +91,10 @@ const Game = props => {
                     {inputElement}
                     <Button disabled={!formValid} BtnType='Success'>Submit</Button>
                 </form>
+                {trivia}
+                {/* artist needs to load before sending it to Trivia component */}
+                {/* <Trivia artist={props.artist}/> */}
                 {/* artistList gets list of artists from state*/}
-                <Trivia/>
                 {/* <ArtistList/> */}
             </div>
         </div>
@@ -95,7 +103,7 @@ const Game = props => {
 
 const mapStateToProps = state => {
     return {
-        year: state.artistReducer.artist[0]
+        artist: state.artistReducer.artist[0]
     };
 }
 
