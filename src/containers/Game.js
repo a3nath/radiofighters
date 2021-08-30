@@ -80,7 +80,7 @@ const Game = props => {
     let trivia = null
 
     if (props.artist){
-        trivia = <Trivia artist={props.artist}/>
+        trivia = <Trivia artist={props.artist} albums= {props.albums}/>
     }
 
     return (
@@ -103,7 +103,11 @@ const Game = props => {
 
 const mapStateToProps = state => {
     return {
-        artist: state.artistReducer.artist[0]
+        //artist object
+        artist: state.artistReducer.artist[0],
+        //albums object
+        albums: state.artistReducer.albums
+
     };
 }
 

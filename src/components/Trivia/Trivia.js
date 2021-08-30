@@ -19,6 +19,7 @@ const Trivia = props => {
     //generate 4 albums
 
     console.log(props.artist)
+    console.log(props.albums)
 
     console.log('Trivia')
     return props.artist.intFormedYear
