@@ -13,11 +13,11 @@ export const loading = () => {
 
 export const enterArtist = artist => {
     return {type: actionTypes.ENTER_ARTIST, artistEnter: artist}
-}
+};
 
-export const addArtist = artist => {
-    return {type: actionTypes.ADD_ARTIST ,artist: artist}
-}
+export const addArtist = ([artObj, albumObj]) => {
+    return {type: actionTypes.ADD_ARTIST ,artist: artObj.artists, albums: albumObj.album}
+};
 
 export const submitArtist = artist => {
     return {type: actionTypes.SUBMIT_ARTIST, artist: artist}
@@ -35,14 +35,28 @@ export const addArtistThunk = (artist) => {
     const urlArt =  `${musicApp.audioDBBaseurl}/${musicApp.audioDBAPI}/${searchArt}${artist}`
     const urlAlbum =  `${musicApp.audioDBBaseurl}/${musicApp.audioDBAPI}/${searchAlbum}${artist}`
     return (dispatch) => {
+        return (
+        dispatch(loading()),
         Promise.all([fetch(urlArt),fetch(urlAlbum)])
             .then(responses => {
-                    return Promise.all(responses.map(res => res.json()))})
+                    return Promise.all(responses.map(response => {
+                        if (response.ok){
+                            return response.json()                    
+                        }//get response but not ok
+                        else {
+                            const error = new Error(`Error ${response.status}: ${response.statusText}`)
+                            error.response = response;
+                            throw error;
+                        }
+                    }
+                ))
+            })
             .then(
-                data => console.log(data)
+                data => dispatch(addArtist(data))
             )
-            .catch(err => dispatch(error(err)));
-        }
+            .catch(err => dispatch(error(err)))
+        )
+    }
 }
             
         
