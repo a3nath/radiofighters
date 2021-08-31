@@ -82,7 +82,7 @@ const Game = props => {
     let trivia = null
 
     if (props.artist){
-        trivia = <Trivia artist={props.artist} albums= {props.albums} scoreClick={props.scoreAdd}/>
+        trivia = <Trivia artist={props.artist} albums= {props.albums} scoreAdded={props.scoreAdd}/>
     }
 
     return (

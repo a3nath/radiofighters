@@ -1,28 +1,12 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
-import * as actionCreators from '../../store/actionCreators/scoreActions';
-import classes from './Options.module.css'
+import Option from './Option/Option';
 
-const Option = props => {
-
-    const [correct, setCorrect] = useState('')
-
-    function optionHandler(event) {
-        if (event.target.dataset.answer === 'true'){
-            setCorrect('right')
-            props.clicked()
-        }
-        else setCorrect('wrong')
-
-    }
-
-   return <button onClick={optionHandler} {...props} className={correct === 'right' ? classes.right: correct === 'wrong' ?  classes.wrong : classes.blank}>{props.value}</button>
+const Options = props => {
+    return props.options.map((option,index) => {
+        return  <Option value={option.value} data-answer={option.answer} key={index} clicked={props.scoreClicked}/>
+    })
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-            }
-}
+export default Options;
 
-export default connect(null, mapDispatchToProps)(Option);
