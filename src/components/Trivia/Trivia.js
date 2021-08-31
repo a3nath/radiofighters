@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import classes from './Trivia.module.css'
-import Option from '../Options/Option/Option';
+import Options from '../Options/Options';
 
 const Trivia = props => {
    
@@ -23,7 +23,6 @@ const Trivia = props => {
         return wrongOptionArr
     }
   
-
     const randomGen = (ans) => {
         let intAns = parseInt(ans)
         let ranArr = [];
@@ -43,30 +42,18 @@ const Trivia = props => {
         let questionBlockArr = []
         console.log(questionBlockArr)
         return (
-            questionBlockArr.push({'num': index,'text': ques.question}, randomGen(ans.answer))
+        [{'num': index,'text': ques.question}, randomGen(ans.answer)]
         )
     })
 
-    // const answer1 = props.artist.intFormedYear
-
-    // const Q1Obj = {'question': 1, 'text': Q1}
-
-    //TriviaArr.push(questionBlockArr{num})
-    //[[{},{}], [{}, {}]]
-
     // const Q2 = "What year was the album released"
-    
     // const correctOption = parseInt(answer1)
-
     //show picture
 
     //Q2: When was album realseased
     //filter for album form strReleaseFormat to get albums only
 
     //give me 3 options within 10 years
-
-
-  
 
     // const getQuesAnsArr = (q, ans) => {
     //     const Q1 = "What year was the band/artist formed?"
@@ -76,43 +63,33 @@ const Trivia = props => {
     
 
     // const getAnswerOptions = (ans1, ans2) => {
-        
-        
-    //     question
 
-    //     getAnswerOptions(answer1)
-    // }
-
-    // const getTriviaArr = () => {
-    //     const TriviaArr = []
-
-    // }
-
- 
-
-    //generate array of options
-
-
-
-    
-    
     // questionBlockArr1.push(optionArr)
 
-    //randomize options array
 
-    // const mapOptions = optionArr.map((option, index) => {
-    //     return <Option value={option.value} data-answer={option.answer} key={index} clicked={props.scoreClick}/>
-    // })
+    const mapOptions = TriviaArr.map((quesOpt, index) => {
+        let [ques, opt] = quesOpt;
+        let quesNum = ques.num;
+        let quesText = ques.text;
+        return (
+            <div className={classes.questionBlock}>
+                <div className={classes.question}>
+                        {quesText}
+                </div>
+                <div className={classes.options}>
+                        <Options ques={quesNum} options={opt} scoreClicked={props.scoreAdded}/>
+                </div>
+            </div>
+        )
+    })
 
     console.log('Trivia')
     console.log(TriviaArr)
+
+
     return (
-        <div className={classes.questionBlock}>
-            {/* {Q1} */}
-            {/* <div className={classes.options}>
-                {mapOptions}
-            </div> */}
-            {TriviaArr}
+        <div className={classes.Trivia}>
+           {mapOptions}
         </div>
     )
 
