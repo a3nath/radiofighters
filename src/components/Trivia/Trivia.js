@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
+import classes from './Trivia.module.css'
+import Option from '../Options/Options';
+
 const Trivia = props => {
+   
 
     const TriviaArr = []
     let optionArr = [];
     let ranArr = [];
-
-    const Q1 = "What year was the band/artist formed"
+    const Q1 = "What year was the band/artist formed?"
     const answer1 = props.artist.intFormedYear
+    const correctOption = parseInt(answer1)
+
+    optionArr.push({'num': 0, 'value': correctOption, 'answer': true })
 
     //show picture
 
@@ -24,11 +30,7 @@ const Trivia = props => {
             if (ranArr.indexOf(ranOption) === -1 && ranOption !== ans) ranArr.push(ranOption)
         }     
     }
-
     randomGen(parseInt(answer1))
-
-    const correctOption = parseInt(answer1)
-    optionArr.push({'num': 0, 'value': correctOption, 'answer': true })
 
     const optionGen = () => {
         const wrongOptionArr = ranArr.map((option, index) => {
@@ -36,21 +38,28 @@ const Trivia = props => {
         })
         return wrongOptionArr
     }
-
     optionArr = [...optionArr, ...optionGen()]
 
-    console.log(props.artist)
-    console.log(props.albums)
-    console.log(optionArr)
+
+    //randomize options array
+
+    const mapOptions = optionArr.map((option, index) => {
+        return <Option value={option.value} data-answer={option.answer} key={index} clicked={props.scoreClick}/>
+    })
 
     console.log('Trivia')
-    return props.artist.intFormedYear
+    return (
+        <div>
+            {Q1}
+            <div className=''>
+                {mapOptions}
+            </div>
+        </div>
+    )
 
     //generate both questions
-    //have a click listener to each inout/li
-    //give it highlight
-    //check if correct
-
+   
+   
     //Q3: Which album features track
     //generate 4 albums
 }

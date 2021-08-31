@@ -5,7 +5,9 @@ import Button from  '../components/UI/Button/Button';
 import Input from '../components/Input/Input';
 import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
 import Trivia from '../components/Trivia/Trivia';
-import * as actionCreators from '../store/actionCreators/index';
+import * as artistActions from '../store/actionCreators/artistActions';
+import * as scoreActions from '../store/actionCreators/scoreActions';
+
 
 
 
@@ -80,12 +82,13 @@ const Game = props => {
     let trivia = null
 
     if (props.artist){
-        trivia = <Trivia artist={props.artist} albums= {props.albums}/>
+        trivia = <Trivia artist={props.artist} albums= {props.albums} scoreClick={props.scoreAdd}/>
     }
 
     return (
         <div>
-            <h1>Hello, thsis is Game Page</h1>
+            <h1>Hello, this is Game Page</h1>
+            <p>{props.score}</p>
             <div>
                 <form onSubmit={artistHandler}>
                     {inputElement}
@@ -106,14 +109,17 @@ const mapStateToProps = state => {
         //artist object
         artist: state.artistReducer.artist[0],
         //albums object
-        albums: state.artistReducer.albums
+        albums: state.artistReducer.albums,
+        score: state.scoreReducer.score
 
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        addArtist: (artist) => dispatch(actionCreators.addArtistThunk(artist)) 
+        addArtist: (artist) => dispatch(artistActions.addArtistThunk(artist)),
+        scoreAdd:  () => dispatch(scoreActions.addScore()) 
+ 
     };
 };
 

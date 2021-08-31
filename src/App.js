@@ -4,7 +4,7 @@ import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.css';
 
-import * as actionCreators from './store/actionCreators/index';
+import * as actionCreators from './store/actionCreators/artistActions';
 import Home from './containers/Home';
 import Game from './containers/Game';
 import Tutorial from './containers/Tutorial';
