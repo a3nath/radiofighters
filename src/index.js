@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom';
 import {createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import reportWebVitals from './reportWebVitals';
+
 
 import './index.css';
 import App from './App';
 import artistReducer from './store/reducers/artistReducer';
-import reportWebVitals from './reportWebVitals';
+import scoreReducer from './store/reducers/scoreReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const rootReducer = combineReducers({artistReducer})
+const rootReducer = combineReducers({artistReducer,scoreReducer})
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 

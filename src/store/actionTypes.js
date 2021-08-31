@@ -3,4 +3,5 @@ export const ENTER_ARTIST = 'ENTER_ARTIST';
 export const SUBMIT_ARTIST = 'SUBMIT_ARTIST';
 export const ERROR = 'ERROR';
 export const LOADING = 'LOADING';
+export const ADD_SCORE = 'ADD_SCORE';
 
