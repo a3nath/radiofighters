@@ -11,7 +11,7 @@ const Trivia = props => {
     //and will bring out new question
     //but how to separte logic for q1 and q2 and make it more genetrkic so we can reuse optionHandler
     
-    // try
+    // get actual album
     const randomAlbumYear = 2000
     const quesAnsArr = [[{'question': 'What year was the band/artist formed?'}, {'answer': props.artist.intFormedYear}], [{'question': 'What year was the album released?'}, {'answer': randomAlbumYear}]]
    
@@ -46,26 +46,6 @@ const Trivia = props => {
         )
     })
 
-    // const Q2 = "What year was the album released"
-    // const correctOption = parseInt(answer1)
-    //show picture
-
-    //Q2: When was album realseased
-    //filter for album form strReleaseFormat to get albums only
-
-    //give me 3 options within 10 years
-
-    // const getQuesAnsArr = (q, ans) => {
-    //     const Q1 = "What year was the band/artist formed?"
-    //     const questionBlockArr1 = []
-    //     questionBlockArr1.push({'num': ,'text': q}, randomGen(parseInt(ans1)))
-    // }
-    
-
-    // const getAnswerOptions = (ans1, ans2) => {
-
-    // questionBlockArr1.push(optionArr)
-
 
     const mapOptions = TriviaArr.map((quesOpt, index) => {
         let [ques, opt] = quesOpt;
@@ -77,7 +57,7 @@ const Trivia = props => {
                         {quesText}
                 </div>
                 <div className={classes.options}>
-                        <Options ques={quesNum} options={opt} scoreClicked={props.scoreAdded}/>
+                        <Options ques={quesNum} options={opt} scoreClicked={props.scoreAdded} quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}/>
                 </div>
             </div>
         )
@@ -89,6 +69,8 @@ const Trivia = props => {
 
     return (
         <div className={classes.Trivia}>
+            {/* //show picture */}
+            {/* loading dispatch */}
            {mapOptions}
         </div>
     )

@@ -10,10 +10,11 @@ import './index.css';
 import App from './App';
 import artistReducer from './store/reducers/artistReducer';
 import scoreReducer from './store/reducers/scoreReducer';
+import questionReducer from './store/reducers/questionReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const rootReducer = combineReducers({artistReducer,scoreReducer})
+const rootReducer = combineReducers({artistReducer,scoreReducer, questionReducer})
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 

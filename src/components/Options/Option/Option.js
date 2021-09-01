@@ -6,21 +6,32 @@ import classes from './Option.module.css'
 
 const Option = props => {
 
+    //need state for question
+    //clicking on one will disable buttons for that qustion
+    //once both question states done show modal
+
+
     const [correct, setCorrect] = useState('')
 
     function optionHandler(event) {
         if (event.target.dataset.answer === 'true'){
-            //styling green
+            //styling success green
             setCorrect('right')
             //increment score
             props.clicked()
-            //disables other button
+            //update answer state
+            props.quesClick()
         }
-        else setCorrect('wrong')
+        else {
+            //styling failure red
+            setCorrect('wrong')
+            //update answer state
+            props.quesClick()
+        }
 
     }
 
-   return <button onClick={optionHandler} {...props} className={correct === 'right' ? classes.right: correct === 'wrong' ?  classes.wrong : classes.blank}>{props.value}</button>
+   return <button onClick={optionHandler} {...props} disabled={props.quesAns} className={correct === 'right' ? classes.right: correct === 'wrong' ?  classes.wrong : classes.blank}>{props.value}</button>
 }
 
 
