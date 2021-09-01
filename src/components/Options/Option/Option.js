@@ -31,7 +31,13 @@ const Option = props => {
 
     }
 
-   return <button onClick={optionHandler} {...props} disabled={props.quesAns} className={correct === 'right' ? classes.right: correct === 'wrong' ?  classes.wrong : classes.blank}>{props.value}</button>
+   return <button 
+            onClick={optionHandler} 
+            {...props} disabled={props.quesAns} 
+            className={correct === 'right' ? classes.right: correct === 'wrong' ?  classes.wrong : classes.blank}
+            >
+            {props.value}
+        </button>
 }
 
 
