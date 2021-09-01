@@ -7,10 +7,10 @@ const Options = props => {
         return  <Option 
             value={option.value} 
             data-answer={option.answer} 
-            key={index} clicked={props.scoreClicked} 
+            key={index} 
+            clicked={props.scoreClicked} 
             quesAns={props.quesAnsed} 
             quesClick={props.quesClicked}
-            modalClose={props.modalClosed}
             />
     })
 }

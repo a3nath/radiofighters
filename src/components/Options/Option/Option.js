@@ -21,12 +21,16 @@ const Option = props => {
             props.clicked()
             //update answer state
             props.quesClick()
+            console.log('quesClick')
+            console.log(props.quesClick)
         }
         else {
             //styling failure red
             setCorrect('wrong')
             //update answer state
             props.quesClick()
+            console.log('quesClick')
+            console.log(props.quesClick)
         }
 
     }

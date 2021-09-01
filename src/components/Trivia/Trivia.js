@@ -11,14 +11,6 @@ const Trivia = props => {
     //and will bring out new question
     //but how to separte logic for q1 and q2 and make it more genetrkic so we can reuse optionHandler
     
-    // get actual album
-    const randomAlbumYear = 2000
-    const quesAnsArr = [
-                        [{'question': 'What year was the band/artist formed?'}, {'answer': props.artist.intFormedYear}], 
-                        [{'question': 'What year was the album released?'}, {'answer': randomAlbumYear}]
-    ]
-   
-
     const optionGen = (ranArr) => {
         const wrongOptionArr = ranArr.map((option, index) => {
             return {'num': index+1, 'value': option, 'answer': false }
@@ -39,20 +31,25 @@ const Trivia = props => {
         return optionArr = [...optionArr, ...optionGen(ranArr)]
     }
 
+    // get actual album
+    const randomAlbumYear = 2000
+    const quesAnsArr = [
+                        [{'question': 'What year was the band/artist formed?'}, {'answer': props.artist.intFormedYear}], 
+                        [{'question': 'What year was the album released?'}, {'answer': randomAlbumYear}]
+    ]
+   
     const TriviaArr = quesAnsArr.map((quesAns, index) => {
         let [ques, ans] = quesAns
-        console.log('ans')
         let questionBlockArr = []
         console.log(questionBlockArr)
         return (
-        [{'num': index,'text': ques.question}, randomGen(ans.answer)]
+        [{'num': index + 1,'text': ques.question}, randomGen(ans.answer)]
         )
     })
 
-
-    const mapOptions = TriviaArr.map((quesOpt, index) => {
+    const mapOptions = TriviaArr.map((quesOpt) => {
         let [ques, opt] = quesOpt;
-        let quesNum = ques.num;
+        let quesNum = ques.num ;
         let quesText = ques.text;
         return (
             <div className={classes.questionBlock}>
@@ -65,7 +62,6 @@ const Trivia = props => {
                         scoreClicked={props.scoreAdded} 
                         quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
                         quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
-                        modalClosed={props.modalCloseHandler}
                         />
                 </div>
             </div>
@@ -80,15 +76,6 @@ const Trivia = props => {
         </div>
     )
 
-    //generate both questions
-   
-    //Q3: Which album features track
-    //generate 4 albums
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         year: state.artistReducer.artist[0]
-//     };
-// }
 export default connect(null)(Trivia);
