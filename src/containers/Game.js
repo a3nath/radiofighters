@@ -7,8 +7,7 @@ import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
 import Trivia from '../components/Trivia/Trivia';
 import * as artistActions from '../store/actionCreators/artistActions';
 import * as scoreActions from '../store/actionCreators/scoreActions';
-
-
+import * as questionActions from '../store/actionCreators/questionActions';
 
 
 const Game = props => {
@@ -82,7 +81,7 @@ const Game = props => {
     let trivia = null
 
     if (props.artist){
-        trivia = <Trivia artist={props.artist} albums= {props.albums} scoreAdded={props.scoreAdd}/>
+        trivia = <Trivia artist={props.artist} albums= {props.albums} scoreAdded={props.scoreAdd} ques1={props.ques1} ques2={props.ques2} quesClicked1={props.quesClick1} quesClicked2={props.quesClick2} />
     }
 
     return (
@@ -110,16 +109,18 @@ const mapStateToProps = state => {
         artist: state.artistReducer.artist[0],
         //albums object
         albums: state.artistReducer.albums,
-        score: state.scoreReducer.score
-
+        score: state.scoreReducer.score,
+        ques1: state.questionReducer.question1,
+        ques2: state.questionReducer.question2
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         addArtist: (artist) => dispatch(artistActions.addArtistThunk(artist)),
-        scoreAdd:  () => dispatch(scoreActions.addScore()) 
- 
+        scoreAdd:  () => dispatch(scoreActions.addScore()),
+        quesClick1: () => dispatch(questionActions.answerQuestion1()),
+        quesClick2: () => dispatch(questionActions.answerQuestion2())
     };
 };
 
