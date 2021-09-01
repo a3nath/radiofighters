@@ -13,7 +13,10 @@ const Trivia = props => {
     
     // get actual album
     const randomAlbumYear = 2000
-    const quesAnsArr = [[{'question': 'What year was the band/artist formed?'}, {'answer': props.artist.intFormedYear}], [{'question': 'What year was the album released?'}, {'answer': randomAlbumYear}]]
+    const quesAnsArr = [
+                        [{'question': 'What year was the band/artist formed?'}, {'answer': props.artist.intFormedYear}], 
+                        [{'question': 'What year was the album released?'}, {'answer': randomAlbumYear}]
+    ]
    
 
     const optionGen = (ranArr) => {
@@ -57,15 +60,17 @@ const Trivia = props => {
                         {quesText}
                 </div>
                 <div className={classes.options}>
-                        <Options ques={quesNum} options={opt} scoreClicked={props.scoreAdded} quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}/>
+                        <Options ques={quesNum} 
+                        options={opt} 
+                        scoreClicked={props.scoreAdded} 
+                        quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
+                        quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
+                        modalClosed={props.modalCloseHandler}
+                        />
                 </div>
             </div>
         )
     })
-
-    console.log('Trivia')
-    console.log(TriviaArr)
-
 
     return (
         <div className={classes.Trivia}>
@@ -76,7 +81,6 @@ const Trivia = props => {
     )
 
     //generate both questions
-   
    
     //Q3: Which album features track
     //generate 4 albums

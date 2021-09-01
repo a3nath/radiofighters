@@ -3,18 +3,21 @@ import * as actionTypes from '../actionTypes';
 const iniState = {
     loading:false,
     question1: false,
-    question2: false
+    question2: false,
+    modal: false
 };
 
 const questionReducer = (state = iniState, action ) => {
     if (action){
         switch(action.type){
             case (actionTypes.LOADING):
-                return {...state, loading: true, question1: false, question2: false}
+                return {...state, loading: true, question1: false, question2: false, modal:false}
             case (actionTypes.ANSWER_QUESTION1):
-                return {...state, laoding:false, question1: true}
-            case(actionTypes.ANSWER_QUESTION2):
-                return {...state, loading: false, question2: true}
+                return {...state, laoding:false, question1: true, modal:false}
+            case (actionTypes.ANSWER_QUESTION2):
+                return {...state, loading: false, question2: true, modal:true}
+            case (actionTypes.MODAL_CLOSE):
+                return {...state, modal:false};
             default:
                 return state;
         }

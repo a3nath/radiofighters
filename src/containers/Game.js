@@ -5,9 +5,11 @@ import Button from  '../components/UI/Button/Button';
 import Input from '../components/Input/Input';
 import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
 import Trivia from '../components/Trivia/Trivia';
+import Modal from '../components/UI/Modal/Modal';
 import * as artistActions from '../store/actionCreators/artistActions';
 import * as scoreActions from '../store/actionCreators/scoreActions';
 import * as questionActions from '../store/actionCreators/questionActions';
+import * as modalActions from '../store/actionCreators/modalActions';
 
 
 const Game = props => {
@@ -72,6 +74,8 @@ const Game = props => {
             />
     );
 
+    //modal
+
     //form valid
     //create dummy form
     //value gets updated once ajax call
@@ -81,7 +85,15 @@ const Game = props => {
     let trivia = null
 
     if (props.artist){
-        trivia = <Trivia artist={props.artist} albums= {props.albums} scoreAdded={props.scoreAdd} ques1={props.ques1} ques2={props.ques2} quesClicked1={props.quesClick1} quesClicked2={props.quesClick2} />
+        trivia = <Trivia 
+            artist={props.artist} 
+            albums= {props.albums} 
+            scoreAdded={props.scoreAdd} 
+            ques1={props.ques1} 
+            ques2={props.ques2} 
+            quesClicked1={props.quesClick1} 
+            quesClicked2={props.quesClick2} 
+        />
     }
 
     return (
@@ -94,6 +106,11 @@ const Game = props => {
                     <Button disabled={!formValid} BtnType='Success'>Submit</Button>
                 </form>
                 {trivia}
+                <Modal 
+                    modalShow={props.modal}
+                    modalCloseHandler={props.modalClose}
+                    score={props.score}
+                />
                 {/* artist needs to load before sending it to Trivia component */}
                 {/* <Trivia artist={props.artist}/> */}
                 {/* artistList gets list of artists from state*/}
@@ -111,7 +128,8 @@ const mapStateToProps = state => {
         albums: state.artistReducer.albums,
         score: state.scoreReducer.score,
         ques1: state.questionReducer.question1,
-        ques2: state.questionReducer.question2
+        ques2: state.questionReducer.question2,
+        modal: state.questionReducer.modal
     };
 }
 
@@ -120,7 +138,8 @@ const mapDispatchToProps = dispatch => {
         addArtist: (artist) => dispatch(artistActions.addArtistThunk(artist)),
         scoreAdd:  () => dispatch(scoreActions.addScore()),
         quesClick1: () => dispatch(questionActions.answerQuestion1()),
-        quesClick2: () => dispatch(questionActions.answerQuestion2())
+        quesClick2: () => dispatch(questionActions.answerQuestion2()),
+        modalClose: () => dispatch(modalActions.modalClose())
     };
 };
 
