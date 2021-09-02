@@ -24,7 +24,7 @@ export const submitArtist = artist => {
 }
 
 export const error = err => {
-    return {type: actionTypes.ERROR, errro: err}
+    return {type: actionTypes.ERROR, error: err}
 }
 
 
@@ -52,9 +52,18 @@ export const addArtistThunk = (artist) => {
                 ))
             })
             .then(
-                data => (console.log(data), dispatch(addArtist(data)))
+                data => {console.log(data)
+                    if (data[0].artists === null) {
+                        return dispatch(error({error:'Artist Not Found'}))
+                    }
+                    else{
+                        return dispatch(addArtist(data))
+                    }
+                        
+                }
             )
-            .catch(err => dispatch(error(err)))
+            .catch(err =>dispatch(error(err))
+            )
         )
     }
 }

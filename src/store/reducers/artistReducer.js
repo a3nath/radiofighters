@@ -1,7 +1,7 @@
 import * as actionTypes from '../actionTypes';
 
 const iniState = {
-    error: false,
+    error: null,
     loading:false,
     artist: [],
     albums:[],
@@ -14,11 +14,11 @@ const artistReducer = (state = iniState, action ) => {
     if (action){
         switch(action.type){
             case (actionTypes.LOADING):
-                return {...state, loading:true, error:false}
+                return {...state, loading:true, error:null}
             case (actionTypes.ADD_ARTIST):
-                return {...state, artist: action.artist, albums: action.albums,error:false, loading:false, artistEnter: '', artistSelected: false}
+                return {...state, artist: action.artist, albums: action.albums,error:null, loading:false}
             case (actionTypes.ERROR):
-                return {...state, error:true, loading: false}
+                return {...state, artist: [], albums: [], error:action.error, loading: false}
             default:
                 return state;
         }

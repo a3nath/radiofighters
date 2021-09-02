@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 
 import Button from  '../components/UI/Button/Button';
 import Input from '../components/Input/Input';
-import ArtistSearch from '../components/ArtistSearch/ArtistSearch';
 import Trivia from '../components/Trivia/Trivia';
 import Modal from '../components/UI/Modal/Modal';
 import * as artistActions from '../store/actionCreators/artistActions';
 import * as scoreActions from '../store/actionCreators/scoreActions';
 import * as questionActions from '../store/actionCreators/questionActions';
 import * as modalActions from '../store/actionCreators/modalActions';
+import ArtistError from '../components/ArtistError/ArtistError';
 
 
 const Game = props => {
@@ -93,7 +93,18 @@ const Game = props => {
             ques2={props.ques2} 
             quesClicked1={props.quesClick1} 
             quesClicked2={props.quesClick2} 
+            loading={props.loading}
+            error={props.error}
         />
+    }
+
+    let errModal = null;
+
+    if (props.error || props.artist === null){
+        errModal = <ArtistError errMess={props.error.error}/>
+        console.log('ERROR console')
+        console.log(props.error)
+        console.log(props.error.error)
     }
 
     return (
@@ -106,6 +117,7 @@ const Game = props => {
                     <Button disabled={!formValid} BtnType='Success'>Submit</Button>
                 </form>
                 {trivia}
+                {errModal}
                 <Modal 
                     modalShow={props.modal}
                     modalCloseHandler={props.modalClose}
@@ -114,7 +126,7 @@ const Game = props => {
                 {/* artist needs to load before sending it to Trivia component */}
                 {/* <Trivia artist={props.artist}/> */}
                 {/* artistList gets list of artists from state*/}
-                {/* <ArtistList/> */}
+                {/* <ArtistList/> +*/}
             </div>
         </div>
     );
@@ -122,6 +134,8 @@ const Game = props => {
 
 const mapStateToProps = state => {
     return {
+        loading: state.artistReducer.loading,
+        error: state.artistReducer.error,
         //artist object
         artist: state.artistReducer.artist[0],
         //albums object
@@ -129,7 +143,7 @@ const mapStateToProps = state => {
         score: state.scoreReducer.score,
         ques1: state.questionReducer.question1,
         ques2: state.questionReducer.question2,
-        modal: state.questionReducer.modal
+        modal: state.questionReducer.modal,
     };
 }
 
