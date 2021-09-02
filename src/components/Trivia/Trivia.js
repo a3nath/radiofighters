@@ -53,6 +53,7 @@ const Trivia = props => {
         let quesText = ques.text;
         return (
             <div className={classes.questionBlock}>
+                 {/* //show picture */}
                 <div className={classes.question}>
                         {quesText}
                 </div>
@@ -70,8 +71,7 @@ const Trivia = props => {
 
     return (
         <div className={classes.Trivia}>
-            {/* //show picture */}
-            {/* loading dispatch */}
+            <img src={props.artist.strArtistBanner}/>
            {mapOptions}
         </div>
     )
