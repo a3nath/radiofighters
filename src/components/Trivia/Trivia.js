@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import classes from './Trivia.module.css'
 import Options from '../Options/Options';
+import Spinner from '../UI/Spinner/Spinner';
 
 const Trivia = props => {
    
@@ -47,7 +48,7 @@ const Trivia = props => {
         )
     })
 
-    const mapOptions = TriviaArr.map((quesOpt) => {
+    let mapOptions = TriviaArr.map((quesOpt) => {
         let [ques, opt] = quesOpt;
         let quesNum = ques.num ;
         let quesText = ques.text;
@@ -68,6 +69,11 @@ const Trivia = props => {
             </div>
         )
     })
+
+    if (props.loading){
+        mapOptions = <Spinner/>
+    }
+
 
     return (
         <div className={classes.Trivia}>
