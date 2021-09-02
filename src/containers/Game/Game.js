@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import Button from  '../components/UI/Button/Button';
-import Input from '../components/Input/Input';
-import Trivia from '../components/Trivia/Trivia';
-import Modal from '../components/UI/Modal/Modal';
-import * as artistActions from '../store/actionCreators/artistActions';
-import * as scoreActions from '../store/actionCreators/scoreActions';
-import * as questionActions from '../store/actionCreators/questionActions';
-import * as modalActions from '../store/actionCreators/modalActions';
-import ArtistError from '../components/ArtistError/ArtistError';
+import Button from  '../../components/UI/Button/Button';
+import Input from '../../components/Input/Input';
+import Trivia from '../../components/Trivia/Trivia';
+import Modal from '../../components/UI/Modal/Modal';
+import * as artistActions from '../../store/actionCreators/artistActions';
+import * as scoreActions from '../../store/actionCreators/scoreActions';
+import * as questionActions from '../../store/actionCreators/questionActions';
+import * as modalActions from '../../store/actionCreators/modalActions';
+import ArtistError from '../../components/ArtistError/ArtistError';
 
 
 const Game = props => {
@@ -87,7 +87,7 @@ const Game = props => {
     if (props.artist){
         trivia = <Trivia 
             artist={props.artist} 
-            albums= {props.albums} 
+            albums={props.albums} 
             scoreAdded={props.scoreAdd} 
             ques1={props.ques1} 
             ques2={props.ques2} 
@@ -95,6 +95,7 @@ const Game = props => {
             quesClicked2={props.quesClick2} 
             loading={props.loading}
             error={props.error}
+            modalShow={props.modalShow}
         />
     }
 
@@ -143,7 +144,7 @@ const mapStateToProps = state => {
         score: state.scoreReducer.score,
         ques1: state.questionReducer.question1,
         ques2: state.questionReducer.question2,
-        modal: state.questionReducer.modal,
+        modal: state.modalReducer.modal,
     };
 }
 
@@ -153,6 +154,7 @@ const mapDispatchToProps = dispatch => {
         scoreAdd:  () => dispatch(scoreActions.addScore()),
         quesClick1: () => dispatch(questionActions.answerQuestion1()),
         quesClick2: () => dispatch(questionActions.answerQuestion2()),
+        modalShow: () => dispatch(modalActions.modalShow()),
         modalClose: () => dispatch(modalActions.modalClose())
     };
 };

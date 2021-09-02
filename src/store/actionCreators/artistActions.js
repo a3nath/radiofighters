@@ -11,10 +11,6 @@ export const loading = () => {
     return {type: actionTypes.LOADING}
 }
 
-// export const enterArtist = artist => {
-//     return {type: actionTypes.ENTER_ARTIST, artistEnter: artist}
-// };
-
 export const addArtist = ([artObj, albumObj]) => {
     return {type: actionTypes.ADD_ARTIST ,artist: artObj.artists, albums: albumObj.album}
 };

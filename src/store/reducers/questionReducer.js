@@ -4,7 +4,6 @@ const iniState = {
     loading:false,
     question1: false,
     question2: false,
-    modal: false
 };
 
 const questionReducer = (state = iniState, action ) => {
@@ -15,9 +14,7 @@ const questionReducer = (state = iniState, action ) => {
             case (actionTypes.ANSWER_QUESTION1):
                 return {...state, loading:false, question1: true, modal:false}
             case (actionTypes.ANSWER_QUESTION2):
-                return {...state, loading: false, question2: true, modal:true}
-            case (actionTypes.MODAL_CLOSE):
-                return {...state, modal:false};
+                return {...state, loading: false, question2: true}
             default:
                 return state;
         }

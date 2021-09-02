@@ -16,7 +16,7 @@ const artistReducer = (state = iniState, action ) => {
             case (actionTypes.LOADING):
                 return {...state, loading:true, error:null}
             case (actionTypes.ADD_ARTIST):
-                return {...state, artist: action.artist, albums: action.albums,error:null, loading:false}
+                return {...state, artist: action.artist, albums: action.albums, error:null, loading:false}
             case (actionTypes.ERROR):
                 return {...state, artist: [], albums: [], error:action.error, loading: false}
             default:

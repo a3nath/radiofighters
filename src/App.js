@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import * as actionCreators from './store/actionCreators/artistActions';
-import Home from './containers/Home';
-import Game from './containers/Game';
-import Tutorial from './containers/Tutorial';
+import Home from './containers/Home/Home';
+import Game from './containers/Game/Game';
+import Tutorial from './containers/Tutorial/Tutorial';
 import Layout from './components/Layout/Layout';
 
 
