@@ -7,7 +7,23 @@ import Spinner from '../UI/Spinner/Spinner';
 import Button from '../UI/Button/Button';
 
 const Trivia = props => {
+
+    const getRandomAlbum = (albumArr) => {
+        const numAblums = albumArr.length;
+        const album = albumArr[Math.floor(Math.random() * numAblums)]
+        return [album.strAlbum, parseInt(album.intYearReleased)]
+    }
  
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array
+    }
+    
+
     const optionGen = (ranArr) => {
         const wrongOptionArr = ranArr.map((option, index) => {
             return {'num': index+1, 'value': option, 'answer': false }
@@ -33,16 +49,9 @@ const Trivia = props => {
     const albums = props.albums
     const validAlbum = albums.filter(album => album.strReleaseFormat === 'Album');
     
-    const getRandomAlbum = (albumArr) => {
-        const numAblums = albumArr.length;
-        const album = albumArr[Math.floor(Math.random() * numAblums)]
-        return [album.strAlbum, parseInt(album.intYearReleased)]
-    }
 
     let [ranAlbumName, ranAlbumRelease] = getRandomAlbum(props.albums)
     
-    const randomAlbumYear = 2000
-
     const quesAnsArr = [
                         [{'question': 'What year was the band/artist formed?'}, {'answer': props.artist.intFormedYear}], 
                         [{'question': `What year was the album ${ranAlbumName} released?`}, {'answer':ranAlbumRelease }]
@@ -52,9 +61,11 @@ const Trivia = props => {
         let [ques, ans] = quesAns
         let questionBlockArr = []
         return (
-        [{'num': index + 1,'text': ques.question}, randomGen(ans.answer)]
+        [{'num': index + 1,'text': ques.question}, shuffleArray( randomGen(ans.answer))]
         )
     })
+
+    console.log(TriviaArr)
 
     let mapOptions = TriviaArr.map((quesOpt) => {
         let [ques, opt] = quesOpt;

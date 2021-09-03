@@ -10,20 +10,22 @@ const Option = props => {
     //clicking on one will disable buttons for that qustion
     //once both question states done show modal
 
-    const [correct, setCorrect] = useState('')
+    // const [correct, setCorrect] = useState('')
 
     function optionHandler(event) {
         if (event.target.dataset.answer === 'true'){
             //styling success green
-            setCorrect('right')
+            // setCorrect('right')
             //increment score
-            props.clicked()
+            // props.clicked()
             //update answer state
-            props.quesClick()
+            //send value click
+            props.quesClick([event.target.value])
+            console.log(event.target.value)
         }
         else {
             //styling failure red
-            setCorrect('wrong')
+            // setCorrect('wrong')
             //update answer state
             props.quesClick()
         }
@@ -32,8 +34,9 @@ const Option = props => {
    return   <button 
                 onClick={optionHandler} 
                 {...props} 
-                // disabled={props.quesAns} 
-                className={correct === 'right' ? classes.right: correct === 'wrong' ?  classes.wrong : classes.blank}
+                //if modal shows, submit clicked disable buttons
+                disabled={props.modal} 
+                // className={correct === 'right' ? classes.right: correct === 'wrong' ?  classes.wrong : classes.blank}
             >
                 {props.value}
             </button>
