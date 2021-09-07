@@ -20,19 +20,25 @@ const Option = props => {
             // props.clicked()
             //update answer state
             //send value click
-            props.quesClick([event.target.value])
+            // props.quesClick([event.target.value]) event.target.option
             console.log(event.target.value)
+            console.log(event.target.optnum)
         }
         else {
             //styling failure red
             // setCorrect('wrong')
             //update answer state
             props.quesClick()
+            console.log(event)
+            console.log(event.target)
+            console.log(event.target.value)
+            console.log(event.target.dataset.tag)
         }
     }
 
    return   <button 
                 onClick={optionHandler} 
+                data-tag={props.optnum}
                 {...props} 
                 //if modal shows, submit clicked disable buttons
                 disabled={props.modal} 
