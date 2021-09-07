@@ -13,7 +13,6 @@ const Trivia = props => {
         const album = albumArr[Math.floor(Math.random() * numAblums)]
         return [album.strAlbum, parseInt(album.intYearReleased)]
     }
- 
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
