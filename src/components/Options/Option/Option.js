@@ -13,27 +13,28 @@ const Option = props => {
     // const [correct, setCorrect] = useState('')
 
     function optionHandler(event) {
-        if (event.target.dataset.answer === 'true'){
-            //styling success green
-            // setCorrect('right')
-            //increment score
-            // props.clicked()
-            //update answer state
-            //send value click
-            // props.quesClick([event.target.value]) event.target.option
-            console.log(event.target.value)
-            console.log(event.target.optnum)
-        }
-        else {
-            //styling failure red
-            // setCorrect('wrong')
-            //update answer state
-            props.quesClick()
-            console.log(event)
-            console.log(event.target)
-            console.log(event.target.value)
-            console.log(event.target.dataset.tag)
-        }
+        props.quesClick(parseInt(event.target.optnum))
+        // if (event.target.dataset.answer === 'true'){
+        //     //styling success green
+        //     // setCorrect('right')
+        //     //increment score
+        //     // props.clicked()
+        //     //update answer state
+        //     //send value click
+        //     // props.quesClick([event.target.value]) event.target.option
+        //     console.log(event.target.value)
+        //     console.log(event.target.optnum)
+        // }
+        // else {
+        //     //styling failure red
+        //     // setCorrect('wrong')
+        //     //update answer state
+        //     props.quesClick()
+        //     console.log(event)
+        //     console.log(event.target)
+        //     console.log(event.target.value)
+        //     console.log(event.target.dataset.tag)
+        // }
     }
 
    return   <button 
