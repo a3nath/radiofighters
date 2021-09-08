@@ -152,8 +152,8 @@ const mapDispatchToProps = dispatch => {
     return {
         addArtist: (artist) => dispatch(artistActions.addArtistThunk(artist)),
         scoreAdd:  () => dispatch(scoreActions.addScore()),
-        quesClick1: () => dispatch(questionActions.answerQuestion1()),
-        quesClick2: () => dispatch(questionActions.answerQuestion2()),
+        quesClick1: (optNum) => dispatch(questionActions.answerQuestion1(optNum)),
+        quesClick2: (optNum) => dispatch(questionActions.answerQuestion2(optNum)),
         modalShow: () => dispatch(modalActions.modalShow()),
         modalClose: () => dispatch(modalActions.modalClose())
     };

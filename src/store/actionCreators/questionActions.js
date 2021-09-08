@@ -6,10 +6,10 @@ export const Loading = () => {
     return {type:actionTypes.LOADING};
 }
 
-export const answerQuestion1 = () => {
-    return {type: actionTypes.ANSWER_QUESTION1}
+export const answerQuestion1 = (optNum) => {
+    return {type: actionTypes.ANSWER_QUESTION1, option: optNum}
 }
 
-export const answerQuestion2 = () => {
-    return {type: actionTypes.ANSWER_QUESTION2}
+export const answerQuestion2 = (optNum) => {
+    return {type: actionTypes.ANSWER_QUESTION2, option:optNum}
 }
