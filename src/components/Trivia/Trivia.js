@@ -64,8 +64,6 @@ const Trivia = props => {
         )
     })
 
-    console.log(TriviaArr)
-
     let mapOptions = TriviaArr.map((quesOpt) => {
         let [ques, opt] = quesOpt;
         let quesNum = ques.num ;
@@ -88,6 +86,11 @@ const Trivia = props => {
             </div>
         )
     })
+
+    console.log('Trivia')
+    console.log(props.quesClicked1())
+    console.log(props.quesClicked2)
+
 
     if (props.loading){
         mapOptions = <Spinner/>

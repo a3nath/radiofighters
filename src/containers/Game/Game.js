@@ -108,6 +108,9 @@ const Game = props => {
         console.log(props.error.error)
     }
 
+    console.log('game')
+    console.log(props.ques1Opt)
+
     return (
         <div>
             <h1>Hello, this is Game Page</h1>
@@ -123,6 +126,8 @@ const Game = props => {
                     modalShow={props.modal}
                     modalCloseHandler={props.modalClose}
                     score={props.score}
+                    ques1Opt={props.ques1Opt}
+                    ques2Opt={props.ques2Opt}
                 />
                 {/* artist needs to load before sending it to Trivia component */}
                 {/* <Trivia artist={props.artist}/> */}
@@ -132,6 +137,8 @@ const Game = props => {
         </div>
     );
 }
+
+
 
 const mapStateToProps = state => {
     return {
@@ -144,7 +151,9 @@ const mapStateToProps = state => {
         score: state.scoreReducer.score,
         ques1: state.questionReducer.question1,
         ques2: state.questionReducer.question2,
-        modal: state.modalReducer.modal,
+        ques1Opt: state.questionReducer.ques1opt,
+        ques2Opt: state.questionReducer.ques2opt,
+        modal: state.modalReducer.modal
     };
 }
 
