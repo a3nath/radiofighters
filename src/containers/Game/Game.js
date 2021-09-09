@@ -5,11 +5,13 @@ import Button from  '../../components/UI/Button/Button';
 import Input from '../../components/Input/Input';
 import Trivia from '../../components/Trivia/Trivia';
 import Modal from '../../components/UI/Modal/Modal';
+import Score from '../../components/Score/Score';
 import * as artistActions from '../../store/actionCreators/artistActions';
 import * as scoreActions from '../../store/actionCreators/scoreActions';
 import * as questionActions from '../../store/actionCreators/questionActions';
 import * as modalActions from '../../store/actionCreators/modalActions';
 import ArtistError from '../../components/ArtistError/ArtistError';
+
 
 
 const Game = props => {
@@ -45,7 +47,6 @@ const Game = props => {
         setArtistForm(tempForm)
         //dispatch input typed value to fetch
         //props.addArtist(event.target.value)
-        console.log(event.target.value)
     };   
 
     //list will get value from artist form value
@@ -61,11 +62,11 @@ const Game = props => {
     
     const inputElement = (
             <Input 
-                inputType={artistForm.elementConfig.type}
+                inputtype={artistForm.elementConfig.type}
                 placeholder={artistForm.elementConfig.placeholder}
                 name='artist'
                 id='artist'
-                changed={inputHandler}
+                changed={(event) => inputHandler(event)}
                 //if indicator off (dropdown value not selected otherwise dropdown value from store)
                 // value={props.artistSelected ? props.artistEnter : artistForm.value}
                 value = {artistForm.value}
@@ -74,7 +75,11 @@ const Game = props => {
             />
     );
 
-    //modal
+    const score = <Score
+        q1Opt={props.ques1Opt}
+        q2Opt={props.ques2Opt}
+    />
+
 
     //form valid
     //create dummy form
@@ -124,11 +129,10 @@ const Game = props => {
                 {errModal}
                 <Modal 
                     modalShow={props.modal}
-                    modalCloseHandler={props.modalClose}
-                    score={props.score}
-                    ques1Opt={props.ques1Opt}
-                    ques2Opt={props.ques2Opt}
-                />
+                    modalCloseHandler={props.modalClose}    
+                >
+                    {score}
+                </Modal>
                 {/* artist needs to load before sending it to Trivia component */}
                 {/* <Trivia artist={props.artist}/> */}
                 {/* artistList gets list of artists from state*/}
