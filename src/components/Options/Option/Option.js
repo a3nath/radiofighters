@@ -13,7 +13,9 @@ const Option = props => {
     // const [correct, setCorrect] = useState('')
 
     function optionHandler(event) {
-        props.quesClick(parseInt(event.target.optnum))
+        props.quesClick(parseInt(event.target.dataset.tag))
+        console.log('optionHandler')
+        console.log(event.target.dataset.tag)
         // if (event.target.dataset.answer === 'true'){
         //     //styling success green
         //     // setCorrect('right')
