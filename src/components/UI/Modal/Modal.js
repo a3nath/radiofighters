@@ -8,15 +8,6 @@ import classes from './Modal.module.css';
 
 const Modal = props => {
 
-    const q1Opt = props.ques1Opt;
-    const q2Opt = props.ques2Opt;
-
-    console.log('modal')
-    console.log(q1Opt)
-    console.log(q2Opt)
-
-
-
     console.log(props.modalShow)
     return (
         <React.Fragment>
@@ -27,9 +18,6 @@ const Modal = props => {
                     opacity: props.modalShow ? '1' : '0'
                 }}
             >
-                <h1>Thank you for playing!</h1>
-                <p>You scored </p>
-                <Button clicked={props.modalCloseHandler}>Play Again?</Button>
             </div>
         </React.Fragment>
     )

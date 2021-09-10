@@ -5,7 +5,7 @@ import classes from './Options.module.css';
 
 
 
-const Options = props => {
+const Options = props => { 
 
     return props.options.map((option,index) => {
         return  (
