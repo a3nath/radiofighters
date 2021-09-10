@@ -115,6 +115,7 @@ const Game = props => {
 
     console.log('game')
     console.log(props.ques1Opt)
+    console.log(props.ques2Opt)
 
     return (
         <div>
