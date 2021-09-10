@@ -8,6 +8,13 @@ import Button from '../UI/Button/Button';
 
 const Trivia = props => {
 
+    const radioHandler = event => {
+        props.quesClicked(parseInt(event.target.dataset.tag))
+        console.log('radioHandler')
+        console.log(event)
+        console.log(event.target.data)
+    }
+
     const getRandomAlbum = (albumArr) => {
         const numAblums = albumArr.length;
         const album = albumArr[Math.floor(Math.random() * numAblums)]
@@ -81,25 +88,28 @@ const Trivia = props => {
                         scoreClicked={props.scoreAdded} 
                         quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
                         quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
+                        clicked={props.radioHandler}
                     />
                 </div>
             </div>
         )
     })
 
-    console.log('Trivia')
-    console.log(props.quesClicked1())
-    console.log(props.quesClicked2)
-
-
     if (props.loading){
         mapOptions = <Spinner/>
+    }
+
+    const triviaHandler = event => {
+        event.preventDefault();
+        console.log(event);
     }
 
     return (
         <div className={classes.Trivia}>
             <img src={props.artist.strArtistBanner}/>
-           {mapOptions}
+            <form onSubmit={triviaHandler}>
+                {mapOptions}
+            </form>
            <button diasbled={!(props.ques1 && props.ques2)} onClick={props.modalShow}>Submit Answer</button>
         </div>
     )

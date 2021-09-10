@@ -44,7 +44,6 @@ const Option = props => {
                 data-tag={props.optnum}
                 {...props} 
                 //if modal shows, submit clicked disable buttons
-                disabled={props.modal} 
                 // className={correct === 'right' ? classes.right: correct === 'wrong' ?  classes.wrong : classes.blank}
             >
                 {props.value}
