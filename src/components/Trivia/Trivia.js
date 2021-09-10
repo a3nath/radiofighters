@@ -8,13 +8,6 @@ import Button from '../UI/Button/Button';
 
 const Trivia = props => {
 
-    const radioHandler = event => {
-        props.quesClicked(parseInt(event.target.dataset.tag))
-        console.log('radioHandler')
-        console.log(event)
-        console.log(event.target.data)
-    }
-
     const getRandomAlbum = (albumArr) => {
         const numAblums = albumArr.length;
         const album = albumArr[Math.floor(Math.random() * numAblums)]
@@ -28,7 +21,6 @@ const Trivia = props => {
         }
         return array
     }
-    
 
     const optionGen = (ranArr) => {
         const wrongOptionArr = ranArr.map((option, index) => {
@@ -54,7 +46,6 @@ const Trivia = props => {
 
     const albums = props.albums
     const validAlbum = albums.filter(album => album.strReleaseFormat === 'Album');
-    
 
     let [ranAlbumName, ranAlbumRelease] = getRandomAlbum(props.albums)
     
@@ -88,7 +79,7 @@ const Trivia = props => {
                         scoreClicked={props.scoreAdded} 
                         quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
                         quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
-                        clicked={props.radioHandler}
+                        clicked={quesNum === 1 ? props.radioClick1 : props.radioClick2}
                     />
                 </div>
             </div>
@@ -102,6 +93,7 @@ const Trivia = props => {
     const triviaHandler = event => {
         event.preventDefault();
         console.log(event);
+        console.log('trivia handler')
     }
 
     return (
@@ -109,8 +101,9 @@ const Trivia = props => {
             <img src={props.artist.strArtistBanner}/>
             <form onSubmit={triviaHandler}>
                 {mapOptions}
+                <Button BtnType='Success'>Submit Answers</Button>
             </form>
-           <button diasbled={!(props.ques1 && props.ques2)} onClick={props.modalShow}>Submit Answer</button>
+           {/* <button diasbled={!(props.ques1 && props.ques2)} onClick={props.modalShow}>Submit Answer</button> */}
         </div>
     )
 

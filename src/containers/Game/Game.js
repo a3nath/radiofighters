@@ -59,6 +59,20 @@ const Game = props => {
         // setArtistForm(newForm);
         props.addArtist(artistForm.value);
     };
+
+    const radioHandler1 = event => {
+        props.quesClick1(parseInt(event.target.dataset.tag))
+        console.log('radioHandler')
+        console.log(event)
+        console.log(event.target.data)
+    }
+
+    const radioHandler2 = event => {
+        props.quesClick2(parseInt(event.target.dataset.tag))
+        console.log('radioHandler')
+        console.log(event)
+        console.log(event.target.data)
+    }
     
     const inputElement = (
             <Input 
@@ -75,11 +89,14 @@ const Game = props => {
             />
     );
 
-    const score = <Score
-        q1Opt={props.ques1Opt}
-        q2Opt={props.ques2Opt}
-    />
+    let scoreSummary = null
 
+    if (props.ques1Opt && props.ques2Opt) {
+        scoreSummary = <Score
+            q1Opt={props.ques1Opt}
+            q2Opt={props.ques2Opt}
+        />
+    }
 
     //form valid
     //create dummy form
@@ -101,6 +118,8 @@ const Game = props => {
             loading={props.loading}
             error={props.error}
             modalShow={props.modalShow}
+            radioClick1={radioHandler1}
+            radioClick2={radioHandler2}
         />
     }
 
@@ -132,7 +151,7 @@ const Game = props => {
                     modalShow={props.modal}
                     modalCloseHandler={props.modalClose}    
                 >
-                    {score}
+                    {scoreSummary}
                 </Modal>
                 {/* artist needs to load before sending it to Trivia component */}
                 {/* <Trivia artist={props.artist}/> */}
