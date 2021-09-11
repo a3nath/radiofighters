@@ -92,6 +92,8 @@ const Trivia = props => {
 
     const triviaHandler = event => {
         event.preventDefault();
+        console.log('props.modalShow')
+        console.log(props.modalShow)
         props.modalShow()
     }
 

@@ -33,10 +33,17 @@ const Game = props => {
     //checks if form valid
     const [formValid, setFormValid] = useState(false);
 
-    const validHandler = artist => {
-        //if artist exists
-        //api call
-    };
+    const [modal, setModal] = useState(false);
+
+    const modalShowHandler = () => {
+        console.log('modal show triggered')
+        setModal(true);
+    }
+
+    const modalCloseHandler = () => {
+        setModal(false);
+    }
+
 
     //form input handler, triggers when submit form
     const inputHandler = event => {
@@ -54,21 +61,14 @@ const Game = props => {
     const artistHandler = event => {
         event.preventDefault();
         console.log(artistForm.value)
-        // const newForm = {...artistForm};
-        // newForm.value = event.target.value;
-        // setArtistForm(newForm);
         props.addArtist(artistForm.value);
     };
 
     const radioHandler1 = event => {
-        console.log('radioHandler1')
-        console.log(event.target.value)
         props.quesClick1(parseInt(event.target.value))
     }
 
     const radioHandler2 = event => {
-        console.log('radioHandler2')
-        console.log(event.target.value)
         props.quesClick2(parseInt(event.target.value))
     }
     
@@ -117,7 +117,7 @@ const Game = props => {
             q2Opt={props.ques2Opt}
             loading={props.loading}
             error={props.error}
-            modalShow={props.modalShow}
+            modalShow={modalShowHandler}
             radioClick1={radioHandler1}
             radioClick2={radioHandler2}
         />
@@ -144,8 +144,8 @@ const Game = props => {
                 {trivia}
                 {errModal}
                 <Modal 
-                    modalShow={props.modal}
-                    modalCloseHandler={props.modalClose}    
+                    modalOpen={modal}
+                    modalClose={modalCloseHandler}    
                 >
                     {scoreSummary}
                 </Modal>
