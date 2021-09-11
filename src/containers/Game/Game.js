@@ -61,17 +61,15 @@ const Game = props => {
     };
 
     const radioHandler1 = event => {
-        props.quesClick1(parseInt(event.target.dataset.tag))
-        console.log('radioHandler')
-        console.log(event)
-        console.log(event.target.data)
+        console.log('radioHandler1')
+        console.log(event.target.value)
+        props.quesClick1(parseInt(event.target.value))
     }
 
     const radioHandler2 = event => {
-        props.quesClick2(parseInt(event.target.dataset.tag))
-        console.log('radioHandler')
-        console.log(event)
-        console.log(event.target.data)
+        console.log('radioHandler2')
+        console.log(event.target.value)
+        props.quesClick2(parseInt(event.target.value))
     }
     
     const inputElement = (
@@ -115,6 +113,8 @@ const Game = props => {
             ques2={props.ques2} 
             quesClicked1={props.quesClick1} 
             quesClicked2={props.quesClick2} 
+            q1Opt={props.ques1Opt}
+            q2Opt={props.ques2Opt}
             loading={props.loading}
             error={props.error}
             modalShow={props.modalShow}
@@ -131,10 +131,6 @@ const Game = props => {
         console.log(props.error)
         console.log(props.error.error)
     }
-
-    console.log('game')
-    console.log(props.ques1Opt)
-    console.log(props.ques2Opt)
 
     return (
         <div>
