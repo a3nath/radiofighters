@@ -14,7 +14,7 @@ const Score = props => {
 
     console.log('at Score')
     return (
-        <div>
+        <React.Fragment>
             <h1>Thank you for Playing!</h1>
             <p>Your Final Score is</p>
             <p>  {finalScore}</p> 
@@ -22,7 +22,7 @@ const Score = props => {
             <Link to ={'/home'}>
                 <Button clicked={props.homeClick}></Button>
             </Link>
-        </div>
+        </React.Fragment>
     )
 }
 export default Score;
