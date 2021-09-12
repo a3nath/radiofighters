@@ -33,10 +33,17 @@ const Game = props => {
     //checks if form valid
     const [formValid, setFormValid] = useState(false);
 
-    const validHandler = artist => {
-        //if artist exists
-        //api call
-    };
+    const [modal, setModal] = useState(false);
+
+    const modalShowHandler = () => {
+        console.log('modal show triggered')
+        setModal(true);
+    }
+
+    const modalCloseHandler = () => {
+        setModal(false);
+    }
+
 
     //form input handler, triggers when submit form
     const inputHandler = event => {
@@ -54,24 +61,15 @@ const Game = props => {
     const artistHandler = event => {
         event.preventDefault();
         console.log(artistForm.value)
-        // const newForm = {...artistForm};
-        // newForm.value = event.target.value;
-        // setArtistForm(newForm);
         props.addArtist(artistForm.value);
     };
 
     const radioHandler1 = event => {
-        props.quesClick1(parseInt(event.target.dataset.tag))
-        console.log('radioHandler')
-        console.log(event)
-        console.log(event.target.data)
+        props.quesClick1(parseInt(event.target.value))
     }
 
     const radioHandler2 = event => {
-        props.quesClick2(parseInt(event.target.dataset.tag))
-        console.log('radioHandler')
-        console.log(event)
-        console.log(event.target.data)
+        props.quesClick2(parseInt(event.target.value))
     }
     
     const inputElement = (
@@ -91,8 +89,14 @@ const Game = props => {
 
     let scoreSummary = null
 
-    if (props.ques1Opt && props.ques2Opt) {
-        scoreSummary = <Score
+    if (props.ques1 && props.ques2) {
+        console.log('props.ques1/2Opt')
+        console.log(props.ques1)
+        console.log(props.ques2)
+        console.log(props.ques1Opt)
+        console.log(props.ques2Opt)
+        scoreSummary = 
+        <Score
             q1Opt={props.ques1Opt}
             q2Opt={props.ques2Opt}
         />
@@ -115,9 +119,11 @@ const Game = props => {
             ques2={props.ques2} 
             quesClicked1={props.quesClick1} 
             quesClicked2={props.quesClick2} 
+            q1Opt={props.ques1Opt}
+            q2Opt={props.ques2Opt}
             loading={props.loading}
             error={props.error}
-            modalShow={props.modalShow}
+            modalShow={modalShowHandler}
             radioClick1={radioHandler1}
             radioClick2={radioHandler2}
         />
@@ -132,10 +138,6 @@ const Game = props => {
         console.log(props.error.error)
     }
 
-    console.log('game')
-    console.log(props.ques1Opt)
-    console.log(props.ques2Opt)
-
     return (
         <div>
             <h1>Hello, this is Game Page</h1>
@@ -148,8 +150,8 @@ const Game = props => {
                 {trivia}
                 {errModal}
                 <Modal 
-                    modalShow={props.modal}
-                    modalCloseHandler={props.modalClose}    
+                    modalOpen={modal}
+                    modalClose={modalCloseHandler}    
                 >
                     {scoreSummary}
                 </Modal>
@@ -175,8 +177,8 @@ const mapStateToProps = state => {
         score: state.scoreReducer.score,
         ques1: state.questionReducer.question1,
         ques2: state.questionReducer.question2,
-        ques1Opt: state.questionReducer.ques1opt,
-        ques2Opt: state.questionReducer.ques2opt,
+        ques1Opt: state.questionReducer.ques1Opt,
+        ques2Opt: state.questionReducer.ques2Opt,
         modal: state.modalReducer.modal
     };
 }
