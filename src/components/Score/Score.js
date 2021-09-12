@@ -8,7 +8,7 @@ const Score = props => {
     const q2Opt = props.q2Opt;
     const scoreArr = [props.q1Opt, props.q2Opt]   
     console.log('...props')
-    console.log([...props])
+    console.log(scoreArr)
 
     const finalScore = scoreArr.filter(opt => opt === 0).length * 10
 

@@ -89,8 +89,14 @@ const Game = props => {
 
     let scoreSummary = null
 
-    if (props.ques1Opt && props.ques2Opt) {
-        scoreSummary = <Score
+    if (props.ques1 && props.ques2) {
+        console.log('props.ques1/2Opt')
+        console.log(props.ques1)
+        console.log(props.ques2)
+        console.log(props.ques1Opt)
+        console.log(props.ques2Opt)
+        scoreSummary = 
+        <Score
             q1Opt={props.ques1Opt}
             q2Opt={props.ques2Opt}
         />
@@ -171,8 +177,8 @@ const mapStateToProps = state => {
         score: state.scoreReducer.score,
         ques1: state.questionReducer.question1,
         ques2: state.questionReducer.question2,
-        ques1Opt: state.questionReducer.ques1opt,
-        ques2Opt: state.questionReducer.ques2opt,
+        ques1Opt: state.questionReducer.ques1Opt,
+        ques2Opt: state.questionReducer.ques2Opt,
         modal: state.modalReducer.modal
     };
 }

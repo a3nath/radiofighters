@@ -13,9 +13,13 @@ const questionReducer = (state = iniState, action ) => {
         switch(action.type){
             case (actionTypes.LOADING):
                 return {...state, loading: true, question1: false, question2: false, modal:false}
-            case (actionTypes.ANSWER_QUESTION1):
+                case (actionTypes.ANSWER_QUESTION1):
+                    console.log('questionReducer1')
+                    console.log(action.option)
                 return {...state, loading:false, question1: true, ques1Opt: action.option}
             case (actionTypes.ANSWER_QUESTION2):
+                console.log('questionReducer1')
+                console.log(action.option)
                 return {...state, loading: false, question2: true, ques2Opt: action.option}
             default:
                 return state;
