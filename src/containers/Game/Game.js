@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import Button from  '../../components/UI/Button/Button';
@@ -44,6 +44,79 @@ const Game = props => {
         setModal(false);
     }
 
+    const getRandomAlbum = (albumArr) => {
+        const numAblums = albumArr.length;
+        const album = albumArr[Math.floor(Math.random() * numAblums)]
+        return album
+        
+        // [album.strAlbum, parseInt(album.intYearReleased)]
+    }
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array
+    }
+
+    const optionGen = (ranArr) => {
+        const wrongOptionArr = ranArr.map((option, index) => {
+            return {'num': index+1, 'value': option, 'answer': false }
+        })
+        return wrongOptionArr
+    }
+  
+    const randomGen = (ans) => {
+        let intAns = parseInt(ans)
+        let ranArr = [];
+        let optionArr = [];
+        while (ranArr.length < 3) {
+            let multipler = Math.random() < 0.5 ? -1 : 1;
+            let ranOption = Math.floor(Math.random()* 10) * multipler + intAns
+            if (ranArr.indexOf(ranOption) === -1 && ranOption !== intAns) ranArr.push(ranOption)
+        }  
+        optionArr.push({'num': 0, 'value': intAns, 'answer': true })
+        return optionArr = [...optionArr, ...optionGen(ranArr)]
+    }
+
+    const [artist, setArtist] = useState('')
+    
+    const [albumName, setAlbum] = useState('')
+    const [albumYear, setAlbumYear] = useState('')
+    const [triviaArr, setTriviaArr] = useState([])
+
+    let quesAnsArr = [];
+
+    console.log('outsideSetArti')
+    // console.log(props.artist)
+    // console.log(artist)
+    
+    
+    // console.log(artist)
+
+    // if (props.artist) {
+        
+    //     console.log('setArti')
+    //     console.log(props.artist)
+    //     // // setArtist(props.artist)
+    //     // let album = getRandomAlbum(props.albums)
+    //     // // //sel random Album
+    //     // // //get Album Year
+    //     // setAlbum(album.strAlbum)
+    //     // setAlbumYear(parseInt(album.intYearReleased))
+    //     // quesAnsArr = [
+    //     //     [{'question': 'What year was the band/artist formed?'}, {'answer': props.artist.intFormedYear}], 
+    //     //     [{'question': `What year was the album ${albumName} released?`}, {'answer':albumYear }]
+    //     // ]
+    //     // setTriviaArr(quesAnsArr.map((quesAns, index) => {
+    //     //     let [ques, ans] = quesAns
+    //     //     let questionBlockArr = []
+    //     //     return (
+    //     //     [{'num': index + 1,'text': ques.question}, shuffleArray( randomGen(ans.answer))]
+    //     //     )
+    //     // }))
+    // }
 
     //form input handler, triggers when submit form
     const inputHandler = event => {
@@ -61,8 +134,12 @@ const Game = props => {
     const artistHandler = event => {
         event.preventDefault();
         console.log(artistForm.value)
-        props.addArtist(artistForm.value);
+        setArtist(artistForm.value)    
     };
+
+    useEffect(() => {
+        props.addArtist(artist)
+    }, [artist])
 
     const radioHandler1 = event => {
         props.quesClick1(parseInt(event.target.value))
@@ -90,11 +167,6 @@ const Game = props => {
     let scoreSummary = null
 
     if (props.ques1 && props.ques2) {
-        console.log('props.ques1/2Opt')
-        console.log(props.ques1)
-        console.log(props.ques2)
-        console.log(props.ques1Opt)
-        console.log(props.ques2Opt)
         scoreSummary = 
         <Score
             q1Opt={props.ques1Opt}
@@ -110,20 +182,20 @@ const Game = props => {
 
     let trivia = null
 
-    if (props.artist){
+    if (artist){
         trivia = <Trivia 
-            artist={props.artist} 
-            albums={props.albums} 
-            scoreAdded={props.scoreAdd} 
-            ques1={props.ques1} 
-            ques2={props.ques2} 
-            quesClicked1={props.quesClick1} 
-            quesClicked2={props.quesClick2} 
-            q1Opt={props.ques1Opt}
-            q2Opt={props.ques2Opt}
+            // albums={props.albums}  
+            // ques1={props.ques1} 
+            // ques2={props.ques2} 
+            // quesClicked1={props.quesClick1} 
+            // quesClicked2={props.quesClick2} 
+            // q1Opt={props.ques1Opt}
+            // q2Opt={props.ques2Opt}
+            artist={artist} 
             loading={props.loading}
             error={props.error}
             modalShow={modalShowHandler}
+            trivArr = {triviaArr}
             radioClick1={radioHandler1}
             radioClick2={radioHandler2}
         />
@@ -194,4 +266,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Game));
