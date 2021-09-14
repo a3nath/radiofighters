@@ -5,6 +5,7 @@ import classes from './Trivia.module.css'
 import Options from '../Options/Options';
 import Spinner from '../UI/Spinner/Spinner';
 import Button from '../UI/Button/Button';
+import { Link } from 'react-router-dom';
 
 const Trivia = props => {
 
@@ -92,9 +93,10 @@ const Trivia = props => {
 
     const triviaHandler = event => {
         event.preventDefault();
-        console.log('props.modalShow')
-        console.log(props.modalShow)
-        props.modalShow()
+        // console.log('props.modalShow')
+        // console.log(props.modalShow)
+        // props.modalShow()
+        
     }
 
     return (
@@ -102,7 +104,9 @@ const Trivia = props => {
             <img src={props.artist.strArtistBanner}/>
             <form onSubmit={triviaHandler}>
                 {mapOptions}
+                <Link to='/checkout'>
                 <Button BtnType='Success'>Submit Answers</Button>
+                </Link>
             </form>
            {/* <button diasbled={!(props.ques1 && props.ques2)} onClick={props.modalShow}>Submit Answer</button> */}
         </div>
