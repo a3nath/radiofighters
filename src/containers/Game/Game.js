@@ -218,12 +218,12 @@ const Game = props => {
                 </form>
                 {trivia}
                 {errModal}
-                <Modal 
+                {/* <Modal 
                     modalOpen={modal}
                     modalClose={modalCloseHandler}    
                 >
                     {scoreSummary}
-                </Modal>
+                </Modal> */}
                 {/* artist needs to load before sending it to Trivia component */}
                 {/* <Trivia artist={props.artist}/> */}
                 {/* artistList gets list of artists from state*/}
@@ -244,10 +244,10 @@ const mapStateToProps = state => {
         //albums object
         albums: state.artistReducer.albums,
         score: state.scoreReducer.score,
-        ques1: state.questionReducer.question1,
-        ques2: state.questionReducer.question2,
-        ques1Opt: state.questionReducer.ques1Opt,
-        ques2Opt: state.questionReducer.ques2Opt,
+        // ques1: state.questionReducer.question1,
+        // ques2: state.questionReducer.question2,
+        // ques1Opt: state.questionReducer.ques1Opt,
+        // ques2Opt: state.questionReducer.ques2Opt,
         modal: state.modalReducer.modal
     };
 }
