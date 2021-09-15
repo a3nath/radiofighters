@@ -8,7 +8,8 @@ import * as modalActions from '../../store/actionCreators/modalActions';
 
 
 const Checkout = props => {
-
+    console.log(props.q1Opt)
+    console.log(props.q2Opt)
     const scoreArr = [props.q1Opt, props.q2Opt]   
     const finalScore = scoreArr.filter(opt => opt === 0).length * 10
     const playAgain = () => {
@@ -29,6 +30,10 @@ const Checkout = props => {
         setModal(false);
     }
 
+    console.log(props.q1Opt)
+    console.log(props.q2Opt)
+    console.log(scoreArr)
+    console.log(finalScore)
     let modalSummary = 
         <React.Fragment>
             <h1>Thank you for Playing!</h1>
@@ -41,12 +46,14 @@ const Checkout = props => {
         </React.Fragment>
 
     return (
-        <Modal
-            modalOpen={modal}
-            modalClose={modalCloseHandler}
-        >
+        // <Modal
+        //     modalOpen={modal}
+        //     modalClose={modalCloseHandler}
+        // >
+        <div>
             {modalSummary}
-        </Modal>
+        </div>  
+        // </Modal>
     )
 
 }

@@ -3,6 +3,9 @@ import React from 'react';
 import Option from './Option/Option';
 import classes from './Options.module.css';
 
+import Button from '../UI/Button/Button';
+
+
 
 
 const Options = props => { 
@@ -22,6 +25,7 @@ const Options = props => {
                     />
                     {option.value}
                 </label>
+                <Button clicked={}>Next</Button>
             </div>
         )
         
