@@ -112,6 +112,7 @@ const Game = props => {
 
     const radioHandler2 = event => {
         props.quesClick2(parseInt(event.target.dataset.tag))
+
     }
     
     // const [albumName, setAlbum] = useState('')
