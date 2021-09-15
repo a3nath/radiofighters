@@ -35,6 +35,8 @@ const Game = props => {
 
     const [modal, setModal] = useState(false);
 
+    const [currentStep, setCurrentStep] = useState(1)
+
     const modalShowHandler = () => {
         console.log('modal show triggered')
         setModal(true);
@@ -119,22 +121,72 @@ const Game = props => {
     // const [albumYear, setAlbumYear] = useState('')
     // const [triviaArr, setTriviaArr] = useState([])
 
-    let quesAnsArr = [];
-
-    console.log('outsideSetArti')
-    console.log(props.artist)
     
-    // console.log(artist)
+      
+  const _next = () => {
+    let currStep = currentStep
+    currStep = currStep > 1? 2: currStep + 1
+    setCurrentStep(currStep)
+  }
+    
+  const _prev = () => {
+    let currStep = currentStep
+    currStep = currStep <= 1? 1: currStep - 1
+    setCurrentStep(currStep)
+  }
 
-    let trivia = null
-    console.log(props.albums)
+/*
+* the functions for our button
+*/
+// const previousButton = () => {
+//   let currentStep = currentStep;
+//   if(currentStep !==1){
+//       <Button type="button" clicked={_prev}>Previous</Button>
+//   }
+// }
 
+// const nextButton = () => {
+//   let currentStep = currentStep;
+//   if(currentStep <2){
+//     return (
+//       <button 
+//         className="btn btn-primary float-right" 
+//         type="button" onClick={_next}>
+//       Next
+//       </button>        
+//     )
+//   }
+//   return null;
+// }
+
+    // let scoreSummary = null
+
+    // if (props.ques1 && props.ques2) {
+    //     scoreSummary = 
+    //     <Score
+    //         q1Opt={props.ques1Opt}
+    //         q2Opt={props.ques2Opt}
+    //     />
+    // }
+
+    //form valid
+    //create dummy form
+    //value gets updated once ajax call
+    //then form is valid => button
+
+    let errModal = null;
+
+    if (props.error || props.artist === null){
+        errModal = <ArtistError errMess={props.error.error}/>
+        console.log('ERROR console')
+        console.log(props.error)
+        console.log(props.error.error)
+    }
+
+    let quesAnsArr = [];
+    let trivia = null;
 
     if (props.artist && props.albums) {
-        
-        console.log('setArti')
-        console.log(props.artist)
-        console.log(props.albums)
         let album = getRandomAlbum(props.albums)
         // // //sel random Album
         // // //get Album Year
@@ -166,6 +218,9 @@ const Game = props => {
             trivArr = {triviaArr}
             radioClick1={radioHandler1}
             radioClick2={radioHandler2}
+            currStep={currentStep}
+            nextBtn = {_next}
+            prevBtn = {_prev}
         />
     }
 
@@ -184,29 +239,6 @@ const Game = props => {
             />
     );
 
-    let scoreSummary = null
-
-    if (props.ques1 && props.ques2) {
-        scoreSummary = 
-        <Score
-            q1Opt={props.ques1Opt}
-            q2Opt={props.ques2Opt}
-        />
-    }
-
-    //form valid
-    //create dummy form
-    //value gets updated once ajax call
-    //then form is valid => button
-
-    let errModal = null;
-
-    if (props.error || props.artist === null){
-        errModal = <ArtistError errMess={props.error.error}/>
-        console.log('ERROR console')
-        console.log(props.error)
-        console.log(props.error.error)
-    }
 
     return (
         <div>

@@ -25,7 +25,6 @@ const Options = props => {
                     />
                     {option.value}
                 </label>
-                <Button clicked={}>Next</Button>
             </div>
         )
         
