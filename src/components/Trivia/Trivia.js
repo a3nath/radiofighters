@@ -6,6 +6,8 @@ import Options from '../Options/Options';
 import Spinner from '../UI/Spinner/Spinner';
 import Button from '../UI/Button/Button';
 import { Link } from 'react-router-dom';
+import {Question1, Question2} from '../Questions/Question';
+import {PrevButton, NextButton} from '../Questions/Buttons/Buttons';
 
 const Trivia = props => {
 
@@ -63,33 +65,93 @@ const Trivia = props => {
     //     )
     // })
 
-    let mapOptions = props.trivArr.map((quesOpt) => {
-        let [ques, opt] = quesOpt;
-        let quesNum = ques.num ;
-        let quesText = ques.text;
-        return (
-            <div className={classes.questionBlock}>
-                 {/* //show picture */}
-                <div className={classes.question}>
-                        {quesText}
-                </div>
-                <div className={classes.options}>
-                    <Options 
-                        ques={quesNum} 
-                        options={opt} 
-                        //scoreClicked={props.scoreAdded} 
-                        // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
-                        // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
-                        clicked={quesNum === 1 ? props.radioClick1 : props.radioClick2}
-                    />
-                </div>
-            </div>
-        )
-    })
+    // let mapOptions = props.trivArr.map((quesOpt) => {
+    //     let [ques, opt] = quesOpt;
+    //     let quesNum = ques.num ;
+    //     let quesText = ques.text;
+    //     return (
+    //         <div className={classes.questionBlock}>
+    //              {/* //show picture */}
+    //             <div className={classes.question}>
+    //                     {quesText}
+    //             </div>
+    //             <div className={classes.options}>
+    //                 <Options 
+    //                     step={props.currStep}
+    //                     ques={quesNum} 
+    //                     options={opt} 
+    //                     //scoreClicked={props.scoreAdded} 
+    //                     // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
+    //                     // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
+    //                     clicked={quesNum === 1 ? props.radioClick1 : props.radioClick2}
+    //                 />
+    //             </div>
+    //         </div>
+    //     )
+    // })
 
-    if (props.loading){
-        mapOptions = <Spinner/>
-    }
+    // const Ques1 = props => {
+    //     console.log('Ques1')
+    //     console.log(props.Ques1)
+    //     if (props.currStep !== 1) return null
+    //     return props.trivArr[0].map((quesOpt) => {
+    //         let [ques, opt] = quesOpt;
+    //         let quesNum = ques.num;
+    //         let quesText = ques.text;
+    //         return (
+    //             <div className={classes.questionBlock}>
+    //              {/* //show picture */}
+    //                 <div className={classes.question}>
+    //                     {quesText}
+    //                 </div>
+    //                 <div className={classes.options}>
+    //                     <Options 
+    //                         ques={quesNum} 
+    //                         options={opt} 
+    //                         //scoreClicked={props.scoreAdded} 
+    //                         // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
+    //                         // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
+    //                         clicked={props.radioClick1}
+    //                     />
+    //                 </div>
+    //             </div>
+    //         )
+    //     })
+    // }
+
+    // const Ques2 = props => {
+    //     if (props.currStep !== 2) return null
+    //     return props.trivArr[1].map((quesOpt) => {
+    //         let [ques, opt] = quesOpt;
+    //         let quesNum = ques.num;
+    //         let quesText = ques.text;
+    //         return (
+    //             <div className={classes.questionBlock}>
+    //              {/* //show picture */}
+    //                 <div className={classes.question}>
+    //                     {quesText}
+    //                 </div>
+    //                 <div className={classes.options}>
+    //                     <Options 
+    //                         ques={quesNum} 
+    //                         options={opt} 
+    //                         //scoreClicked={props.scoreAdded} 
+    //                         // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
+    //                         // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
+    //                         clicked={props.radioClick2}
+    //                     />
+    //                 </div>
+    //             </div>
+    //         )
+    //     })
+    // }
+
+
+
+
+    // if (props.loading){
+    //     mapOptions = <Spinner/>
+    // }
 
     const triviaHandler = event => {
         event.preventDefault();
@@ -98,12 +160,41 @@ const Trivia = props => {
         // props.modalShow()
         
     }
+    
+    let currentStep = props.currStep;
+    let previousButton = null;
+    let nextButton = null;
+  
+    if(currentStep !==1) {
+        previousButton =
+            <PrevButton 
+                className="btn btn-secondary" 
+                type="button" clicked={props.prevBtn}>
+                Previous 
+            </PrevButton>
 
+    }
+ 
+    if(currentStep !==2) {
+        nextButton =
+            <NextButton 
+                className="btn btn-secondary" 
+                type="button" clicked={props.nextBtn}>
+                Next 
+            </NextButton>
+
+    }
+
+    console.log('nextBtn')
+    console.log(props.nextBtn)
     return (
         <div className={classes.Trivia}>
             <img src={props.artist.strArtistBanner}/>
             <form onSubmit={triviaHandler}>
-                {mapOptions}
+                <Question1 quesArr1={[props.trivArr[0]]} step={props.currStep}/>
+                <Question2 quesArr2={[props.trivArr[1]]} step={props.currStep}/>
+                {previousButton}
+                {nextButton}
                 <Link to='/checkout'>
                 <Button BtnType='Success'>Submit Answers</Button>
                 </Link>
