@@ -6,7 +6,7 @@ import Options from '../Options/Options';
 import Spinner from '../UI/Spinner/Spinner';
 import Button from '../UI/Button/Button';
 import { Link } from 'react-router-dom';
-import {Question1, Question2} from '../Questions/Question';
+import {Question1, Question2, Question3} from '../Questions/Question';
 import {PrevButton, NextButton} from '../Questions/Buttons/Buttons';
 
 const Trivia = props => {
@@ -175,7 +175,7 @@ const Trivia = props => {
 
     }
  
-    if(currentStep !==2) {
+    if(currentStep !==3) {
         nextButton =
             <NextButton 
                 className="btn btn-secondary" 
@@ -193,6 +193,10 @@ const Trivia = props => {
             <form onSubmit={triviaHandler}>
                 <Question1 quesArr1={[props.trivArr[0]]} step={props.currStep}/>
                 <Question2 quesArr2={[props.trivArr[1]]} step={props.currStep}/>
+                {/* //number of band memebers */}
+                <Question3 quesArr3={[props.trivArr[2]]} step={props.currStep}/>
+                {/*<Question4 quesArr4={[props.trivArr[3]]} step={props.currStep}/>
+                <Question5 quesArr5={[props.trivArr[4]]} step={props.currStep}/> */}
                 {previousButton}
                 {nextButton}
                 <Link to='/checkout'>

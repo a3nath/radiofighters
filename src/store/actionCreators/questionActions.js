@@ -13,3 +13,7 @@ export const answerQuestion1 = (optNum) => {
 export const answerQuestion2 = (optNum) => {
     return {type: actionTypes.ANSWER_QUESTION2, option:optNum}
 }
+
+export const answerQuestion3 = (optNum) => {
+    return {type: actionTypes.ANSWER_QUESTION3, option:optNum}
+}
