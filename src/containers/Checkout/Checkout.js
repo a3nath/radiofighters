@@ -10,7 +10,7 @@ import * as modalActions from '../../store/actionCreators/modalActions';
 const Checkout = props => {
     console.log(props.q1Opt)
     console.log(props.q2Opt)
-    const scoreArr = [props.q1Opt, props.q2Opt]   
+    const scoreArr = [props.q1Opt, props.q2Opt, props.q3Opt]   
     const finalScore = scoreArr.filter(opt => opt === 0).length * 10
     const playAgain = () => {
         props.history.goBack()
@@ -62,6 +62,7 @@ const mapStateToProps = state => {
     return {
         q1Opt: state.questionReducer.ques1Opt,
         q2Opt: state.questionReducer.ques2Opt,
+        q3Opt: state.questionReducer.ques3Opt,
         modal: state.modalReducer.modal
     }
 }

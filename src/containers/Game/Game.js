@@ -48,6 +48,9 @@ const Game = props => {
     const [artist, setArtist] = useState('')
     // const [albums, setAlbums] = useState([])
 
+    console.log('artist1')
+    console.log(artist)
+
     //form input handler, triggers when submit form
     const inputHandler = event => {
         event.preventDefault();
@@ -63,13 +66,17 @@ const Game = props => {
 
     const artistHandler = event => {
         event.preventDefault();
-        console.log(artistForm.value)
         setArtist(artistForm.value)    
     };
+    console.log('artist2')
+    console.log(artist)
     
     useEffect(() => {
         props.addArtist(artist)
     }, [artist])
+
+    console.log('artist3')
+    console.log(artist)
 
     const getRandomAlbum = (albumArr) => {
         const validAlbum = albumArr.filter(album => album.strReleaseFormat === 'Album')
@@ -108,9 +115,17 @@ const Game = props => {
         return optionArr = [...optionArr, ...optionGen(ranArr)]
     }
 
+    const [radio1, setRadio1] = useState('')
+    const [radio1Opt, setRadio1Opt] = useState('')
+
+    const [radio2, setRadio2] = useState('')
+    const [radio3, setRadio3] = useState('')
     
     const radioHandler1 = event => {
-        props.quesClick1(parseInt(event.target.dataset.tag))
+        console.log(event.target.value)
+        props.quesClick2(parseInt(event.target.dataset.tag))
+        // setRadio1(event.target.value)
+        // setRadio1Opt(event.target.dataset.tag)
     }
 
     const radioHandler2 = event => {
@@ -121,6 +136,13 @@ const Game = props => {
         props.quesClick3(parseInt(event.target.dataset.tag))
     }
     
+    //need to send option num not value
+    useEffect(() => {
+        props.quesClick1(parseInt(radio1))}
+        ,[radio1]
+    )
+
+
     // const [albumName, setAlbum] = useState('')
     // const [albumYear, setAlbumYear] = useState('')
     // const [triviaArr, setTriviaArr] = useState([])
@@ -211,8 +233,9 @@ const Game = props => {
         })
         trivia = <Trivia 
             // albums={props.albums}  
-            // ques1={props.ques1} 
-            // ques2={props.ques2} 
+            // q1={props.ques1} 
+            // q2={props.ques2} 
+            // q3={props.ques3}
             // quesClicked1={props.quesClick1} 
             // quesClicked2={props.quesClick2} 
             // q1Opt={props.ques1Opt}
@@ -222,6 +245,7 @@ const Game = props => {
             error={props.error}
             modalShow={modalShowHandler}
             trivArr = {triviaArr}
+            radio1={radio1}
             radioClick1={radioHandler1}
             radioClick2={radioHandler2}
             radioClick3={radioHandler3}
@@ -286,6 +310,7 @@ const mapStateToProps = state => {
         score: state.scoreReducer.score,
         // ques1: state.questionReducer.question1,
         // ques2: state.questionReducer.question2,
+        // ques3: state.questionReducer.question3,
         // ques1Opt: state.questionReducer.ques1Opt,
         // ques2Opt: state.questionReducer.ques2Opt,
         modal: state.modalReducer.modal

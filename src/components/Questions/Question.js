@@ -18,10 +18,11 @@ export const Question1 = props => {
                         <Options 
                             ques={quesNum} 
                             options={opt} 
+                            val={props.radio}
                             //scoreClicked={props.scoreAdded} 
                             // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
                             // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
-                            clicked={props.radioClick1}
+                            clicked={props.radioClick}
                         />
                     </div>
                 </div>
@@ -48,7 +49,7 @@ export const Question2 = props => {
                             //scoreClicked={props.scoreAdded} 
                             // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
                             // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
-                            clicked={props.radioClick2}
+                            clicked={props.radioClick}
                         />
                     </div>
                 </div>
@@ -75,7 +76,7 @@ export const Question3 = props => {
                             //scoreClicked={props.scoreAdded} 
                             // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
                             // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
-                            clicked={props.radioClick3}
+                            clicked={props.radioClick}
                         />
                     </div>
                 </div>
