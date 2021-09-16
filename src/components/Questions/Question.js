@@ -18,10 +18,11 @@ export const Question1 = props => {
                         <Options 
                             ques={quesNum} 
                             options={opt} 
+                            val={props.radio}
                             //scoreClicked={props.scoreAdded} 
                             // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
                             // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
-                            clicked={props.radioClick1}
+                            clicked={props.radioClick}
                         />
                     </div>
                 </div>
@@ -30,7 +31,6 @@ export const Question1 = props => {
 }
 
 export const Question2 = props => {
-    console.log(props.quesArr2)
     if (props.step !== 2) return null
         return props.quesArr2.map((quesOpt) => {
             let [ques, opt] = quesOpt;
@@ -49,7 +49,34 @@ export const Question2 = props => {
                             //scoreClicked={props.scoreAdded} 
                             // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
                             // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
-                            clicked={props.radioClick2}
+                            clicked={props.radioClick}
+                        />
+                    </div>
+                </div>
+            )
+        })
+}
+
+export const Question3 = props => {
+    if (props.step !== 3) return null
+        return props.quesArr3.map((quesOpt) => {
+            let [ques, opt] = quesOpt;
+            let quesNum = ques.num;
+            let quesText = ques.text;
+            return (
+                <div>
+                 {/* //show picture */}
+                    <div>
+                        {quesText}
+                    </div>
+                    <div>
+                        <Options 
+                            ques={quesNum} 
+                            options={opt} 
+                            //scoreClicked={props.scoreAdded} 
+                            // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
+                            // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
+                            clicked={props.radioClick}
                         />
                     </div>
                 </div>

@@ -48,6 +48,9 @@ const Game = props => {
     const [artist, setArtist] = useState('')
     // const [albums, setAlbums] = useState([])
 
+    console.log('artist1')
+    console.log(artist)
+
     //form input handler, triggers when submit form
     const inputHandler = event => {
         event.preventDefault();
@@ -63,17 +66,22 @@ const Game = props => {
 
     const artistHandler = event => {
         event.preventDefault();
-        console.log(artistForm.value)
         setArtist(artistForm.value)    
     };
+    console.log('artist2')
+    console.log(artist)
     
     useEffect(() => {
         props.addArtist(artist)
     }, [artist])
 
+    console.log('artist3')
+    console.log(artist)
+
     const getRandomAlbum = (albumArr) => {
-        const numAblums = albumArr.length;
-        const album = albumArr[Math.floor(Math.random() * numAblums)]
+        const validAlbum = albumArr.filter(album => album.strReleaseFormat === 'Album')
+        const numAblums = validAlbum.length;
+        const album = validAlbum[Math.floor(Math.random() * numAblums)]
         return album
         
         // [album.strAlbum, parseInt(album.intYearReleased)]
@@ -100,23 +108,41 @@ const Game = props => {
         let optionArr = [];
         while (ranArr.length < 3) {
             let multipler = Math.random() < 0.5 ? -1 : 1;
-            let ranOption = Math.floor(Math.random()* 10) * multipler + intAns
-            if (ranArr.indexOf(ranOption) === -1 && ranOption !== intAns) ranArr.push(ranOption)
+            let ranOption = Math.floor(Math.random()* 4) * multipler + intAns
+            if (ranArr.indexOf(ranOption) === -1 && ranOption !== intAns && ranOption >= 1) ranArr.push(ranOption)
         }  
         optionArr.push({'num': 0, 'value': intAns, 'answer': true })
         return optionArr = [...optionArr, ...optionGen(ranArr)]
     }
 
+    const [radio1, setRadio1] = useState('')
+    const [radio1Opt, setRadio1Opt] = useState('')
+
+    const [radio2, setRadio2] = useState('')
+    const [radio3, setRadio3] = useState('')
     
     const radioHandler1 = event => {
-        props.quesClick1(parseInt(event.target.dataset.tag))
+        console.log(event.target.value)
+        props.quesClick2(parseInt(event.target.dataset.tag))
+        // setRadio1(event.target.value)
+        // setRadio1Opt(event.target.dataset.tag)
     }
 
     const radioHandler2 = event => {
         props.quesClick2(parseInt(event.target.dataset.tag))
+    }
 
+    const radioHandler3 = event => {
+        props.quesClick3(parseInt(event.target.dataset.tag))
     }
     
+    //need to send option num not value
+    useEffect(() => {
+        props.quesClick1(parseInt(radio1))}
+        ,[radio1]
+    )
+
+
     // const [albumName, setAlbum] = useState('')
     // const [albumYear, setAlbumYear] = useState('')
     // const [triviaArr, setTriviaArr] = useState([])
@@ -125,7 +151,7 @@ const Game = props => {
       
   const _next = () => {
     let currStep = currentStep
-    currStep = currStep > 1? 2: currStep + 1
+    currStep = currStep > 2 ? 3: currStep + 1
     setCurrentStep(currStep)
   }
     
@@ -186,6 +212,7 @@ const Game = props => {
     let quesAnsArr = [];
     let trivia = null;
 
+
     if (props.artist && props.albums) {
         let album = getRandomAlbum(props.albums)
         // // //sel random Album
@@ -194,7 +221,8 @@ const Game = props => {
         const albumYear = parseInt(album.intYearReleased)
         quesAnsArr = [
             [{'question': 'What year was the band/artist formed?'}, {'answer': props.artist.intFormedYear}], 
-            [{'question': `What year was the album ${albumName} released?`}, {'answer':albumYear }]
+            [{'question': `What year was the album ${albumName} released?`}, {'answer':albumYear }],
+            [{'question': 'How many members are in the band?'},{'answer': props.artist.intMembers}]
         ]
         let triviaArr = quesAnsArr.map((quesAns, index) => {
             let [ques, ans] = quesAns
@@ -205,8 +233,9 @@ const Game = props => {
         })
         trivia = <Trivia 
             // albums={props.albums}  
-            // ques1={props.ques1} 
-            // ques2={props.ques2} 
+            // q1={props.ques1} 
+            // q2={props.ques2} 
+            // q3={props.ques3}
             // quesClicked1={props.quesClick1} 
             // quesClicked2={props.quesClick2} 
             // q1Opt={props.ques1Opt}
@@ -216,8 +245,10 @@ const Game = props => {
             error={props.error}
             modalShow={modalShowHandler}
             trivArr = {triviaArr}
+            radio1={radio1}
             radioClick1={radioHandler1}
             radioClick2={radioHandler2}
+            radioClick3={radioHandler3}
             currStep={currentStep}
             nextBtn = {_next}
             prevBtn = {_prev}
@@ -279,6 +310,7 @@ const mapStateToProps = state => {
         score: state.scoreReducer.score,
         // ques1: state.questionReducer.question1,
         // ques2: state.questionReducer.question2,
+        // ques3: state.questionReducer.question3,
         // ques1Opt: state.questionReducer.ques1Opt,
         // ques2Opt: state.questionReducer.ques2Opt,
         modal: state.modalReducer.modal
@@ -291,6 +323,7 @@ const mapDispatchToProps = dispatch => {
         scoreAdd:  () => dispatch(scoreActions.addScore()),
         quesClick1: (optNum) => dispatch(questionActions.answerQuestion1(optNum)),
         quesClick2: (optNum) => dispatch(questionActions.answerQuestion2(optNum)),
+        quesClick3: (optNum) => dispatch(questionActions.answerQuestion3(optNum)),        
         modalShow: () => dispatch(modalActions.modalShow()),
         modalClose: () => dispatch(modalActions.modalClose())
     };
