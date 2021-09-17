@@ -5,16 +5,19 @@ import { Link } from 'react-router-dom';
 import Button from '../../components/UI/Button/Button';
 import Modal from '../../components/UI/Modal/Modal';
 import * as modalActions from '../../store/actionCreators/modalActions';
+import classes from './Checkout.module.css'
+
 
 
 const Checkout = props => {
-    console.log(props.q1Opt)
-    console.log(props.q2Opt)
+    
     const scoreArr = [props.q1Opt, props.q2Opt, props.q3Opt]   
-    const finalScore = scoreArr.filter(opt => opt === 0).length * 10
+    const finalScore = scoreArr.filter(opt => opt === 0).length
+    
     const playAgain = () => {
         props.history.goBack()
     }
+
     const goHome = () => {
         props.history.replace('/')
     }
@@ -25,20 +28,18 @@ const Checkout = props => {
         console.log('modal show triggered')
         setModal(true);
     }
-
     const modalCloseHandler = () => {
         setModal(false);
     }
 
-    console.log(props.q1Opt)
-    console.log(props.q2Opt)
-    console.log(scoreArr)
-    console.log(finalScore)
     let modalSummary = 
         <React.Fragment>
             <h1>Thank you for Playing!</h1>
-            <p>Your Final Score is</p>
-            <p>  {finalScore}</p> 
+            <p>You answered {finalScore} questions correctly  </p>
+            <div className={classes.quesBlock}>
+                {/* array of question, your answer and correct answer with styling */}
+            </div>
+          
             <Button clicked={playAgain}>Play Again</Button>
             <Link to ={'/home'}>
                 <Button clicked={goHome}></Button>
