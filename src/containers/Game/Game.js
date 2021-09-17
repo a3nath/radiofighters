@@ -202,7 +202,7 @@ const Game = props => {
 
     let errModal = null;
 
-    if (props.error || props.artist === null){
+    if (props.error && artistForm.value !== ''){
         errModal = <ArtistError errMess={props.error.error}/>
         console.log('ERROR console')
         console.log(props.error)
@@ -211,6 +211,9 @@ const Game = props => {
 
     let quesAnsArr = [];
     let trivia = null;
+
+    console.log('props.artist')
+    console.log(props.artist)
 
 
     if (props.artist && props.albums) {
@@ -241,6 +244,7 @@ const Game = props => {
             // q1Opt={props.ques1Opt}
             // q2Opt={props.ques2Opt}
             artist={artist} 
+            img={props.artist.strArtistClearart ? props.artist.strArtistClearart :  props.artist.strArtistBanner }
             loading={props.loading}
             error={props.error}
             modalShow={modalShowHandler}
@@ -283,7 +287,6 @@ const Game = props => {
     return (
         <div>
             <h1>Hello, this is Game Page</h1>
-            <p>{props.score}</p>
             <div>
                 <form onSubmit={artistHandler}>
                     {inputElement}
@@ -292,7 +295,6 @@ const Game = props => {
                 {trivia}
                 {errModal}
                 {submit}
-                
                 {/* <Modal 
                     modalOpen={modal}
                     modalClose={modalCloseHandler}    
