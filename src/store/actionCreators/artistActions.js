@@ -37,12 +37,16 @@ export const addArtistThunk = (artist) => {
             .then(responses => {
                     return Promise.all(responses.map(response => {
                         if (response.ok){
-                            return response.json()                    
+                            console.log('response okay')
+                            return response.json()
+                                                
                         }//get response but not ok
                         else {
                             const error = new Error(`Error ${response.status}: ${response.statusText}`)
                             error.response = response;
-                            throw error;
+                            // throw error;
+                            console.log('response err')
+                            return dispatch(error({error:'Artist Not Found'}))
                         }
                     }
                 ))
@@ -50,7 +54,12 @@ export const addArtistThunk = (artist) => {
             .then(
                 data => {console.log(data)
                     if (data[0].artists === null) {
+                        console.log('response art not found')
                         return dispatch(error({error:'Artist Not Found'}))
+                    }
+                    else if (data[1].album === null){
+                        console.log('response album not found')
+                        return dispatch(error({error:'Artist Not Found. Please check artist spelling or try another artist'}))
                     }
                     else{
                         return dispatch(addArtist(data))
