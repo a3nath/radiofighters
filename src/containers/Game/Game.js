@@ -11,6 +11,7 @@ import * as scoreActions from '../../store/actionCreators/scoreActions';
 import * as questionActions from '../../store/actionCreators/questionActions';
 import * as modalActions from '../../store/actionCreators/modalActions';
 import ArtistError from '../../components/ArtistError/ArtistError';
+import { Link } from 'react-router-dom';
 
 
 
@@ -122,7 +123,6 @@ const Game = props => {
     const [radio3, setRadio3] = useState('')
     
     const radioHandler1 = event => {
-        console.log(event.target.value)
         props.quesClick2(parseInt(event.target.dataset.tag))
         // setRadio1(event.target.value)
         // setRadio1Opt(event.target.dataset.tag)
@@ -245,7 +245,6 @@ const Game = props => {
             error={props.error}
             modalShow={modalShowHandler}
             trivArr = {triviaArr}
-            radio1={radio1}
             radioClick1={radioHandler1}
             radioClick2={radioHandler2}
             radioClick3={radioHandler3}
@@ -270,6 +269,16 @@ const Game = props => {
             />
     );
 
+    let submit = null
+
+    if (currentStep === 3) {
+        submit = 
+        <Link to='/checkout'>
+            <Button BtnType='Success'>Submit Answers</Button>
+        </Link>
+    }
+
+    
 
     return (
         <div>
@@ -282,6 +291,8 @@ const Game = props => {
                 </form>
                 {trivia}
                 {errModal}
+                {submit}
+                
                 {/* <Modal 
                     modalOpen={modal}
                     modalClose={modalCloseHandler}    

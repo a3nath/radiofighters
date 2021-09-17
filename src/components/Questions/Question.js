@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Options from '../Options/Options'
+import Button from '../UI/Button/Button';
 
 export const Question1 = props => {
     if (props.step !== 1) return null
@@ -79,6 +81,7 @@ export const Question3 = props => {
                             clicked={props.radioClick}
                         />
                     </div>
+                    
                 </div>
             )
         })

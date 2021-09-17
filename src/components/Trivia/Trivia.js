@@ -53,11 +53,11 @@ const Trivia = props => {
                 <Question3 quesArr3={[props.trivArr[2]]} step={props.currStep} radioClick={props.radioClick3}/>
                 {/* {previousButton} */}
                 {nextButton}
-                <Link to='/checkout'>
-                <Button BtnType='Success'>Submit Answers</Button>
-                </Link>
+                {/* <Link to='/checkout'>
+                <Button disab={props.currStep === 3 ? false : true} BtnType='Success'>Submit Answers</Button>
+                </Link> */}
             </form>
-           {/* <button diasbled={!(props.ques1 && props.ques2)} onClick={props.modalShow}>Submit Answer</button> */}
+           {/* <button disab={!(props.q1 && props.q2 && props.q3)} onClick={props.modalShow}>Submit Answer</button> */}
         </div>
     )
 
