@@ -14,7 +14,6 @@ import ArtistError from '../../components/ArtistError/ArtistError';
 import { Link } from 'react-router-dom';
 
 
-
 const Game = props => {
 
     const [artistForm, setArtistForm] = useState({
@@ -33,9 +32,7 @@ const Game = props => {
 
     //checks if form valid
     const [formValid, setFormValid] = useState(false);
-
     const [modal, setModal] = useState(false);
-
     const [currentStep, setCurrentStep] = useState(1)
 
     const modalShowHandler = () => {
@@ -49,8 +46,6 @@ const Game = props => {
     const [artist, setArtist] = useState('')
     // const [albums, setAlbums] = useState([])
 
-    console.log('artist1')
-    console.log(artist)
 
     //form input handler, triggers when submit form
     const inputHandler = event => {
@@ -69,15 +64,10 @@ const Game = props => {
         event.preventDefault();
         setArtist(artistForm.value)    
     };
-    console.log('artist2')
-    console.log(artist)
-    
+   
     useEffect(() => {
         props.addArtist(artist)
     }, [artist])
-
-    console.log('artist3')
-    console.log(artist)
 
     const getRandomAlbum = (albumArr) => {
         const validAlbum = albumArr.filter(album => album.strReleaseFormat === 'Album')
@@ -142,13 +132,10 @@ const Game = props => {
         ,[radio1]
     )
 
-
     // const [albumName, setAlbum] = useState('')
     // const [albumYear, setAlbumYear] = useState('')
     // const [triviaArr, setTriviaArr] = useState([])
 
-    
-      
   const _next = () => {
     let currStep = currentStep
     currStep = currStep > 2 ? 3: currStep + 1
@@ -211,10 +198,9 @@ const Game = props => {
 
     let quesAnsArr = [];
     let trivia = null;
+    let artLabel = props.artist.strLabel
 
-    console.log('props.artist')
-    console.log(props.artist)
-
+    const ranLabels = ['XL Recordings', 'Parlophone', 'Dreamville', 'Def Jam Recordings', 'Aftermath Entertainment', 'Republic Records','EMI', 'Interscope Records', 'Anthem Records', 'Atlantic']
 
     if (props.artist && props.albums) {
         let album = getRandomAlbum(props.albums)
@@ -282,8 +268,6 @@ const Game = props => {
         </Link>
     }
 
-    
-
     return (
         <div>
             <h1>Hello, this is Game Page</h1>
@@ -309,8 +293,6 @@ const Game = props => {
         </div>
     );
 }
-
-
 
 const mapStateToProps = state => {
     return {
