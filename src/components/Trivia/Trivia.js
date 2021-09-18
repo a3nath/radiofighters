@@ -44,14 +44,14 @@ const Trivia = props => {
 
     }
 
-    console.log('img')
-    console.log(props.artist)
+    console.log('trivArr')
+    console.log(props.trivArr)
 
     return (
         <div className={classes.Trivia}>
             <img src={props.img}/>
             <form onSubmit={triviaHandler}>
-                <Question1 quesArr1={[props.trivArr[0]]} step={props.currStep} radio={props.radio1} radioClick={props.radioClick1}/>
+                <Question1 quesArr1={[props.trivArr[0]]} step={props.currStep} radioClick={props.radioClick1}/>
                 <Question2 quesArr2={[props.trivArr[1]]} step={props.currStep} radioClick={props.radioClick2}/>
                 <Question3 quesArr3={[props.trivArr[2]]} step={props.currStep} radioClick={props.radioClick3}/>
                 {/* {previousButton} */}

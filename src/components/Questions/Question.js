@@ -33,6 +33,7 @@ export const Question1 = props => {
 }
 
 export const Question2 = props => {
+    console.log(props.quesArr2)
     if (props.step !== 2) return null
         return props.quesArr2.map((quesOpt) => {
             let [ques, opt] = quesOpt;
