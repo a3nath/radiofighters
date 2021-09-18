@@ -111,7 +111,6 @@ const Game = props => {
     const randomBand = ans => {
         if (ans === null) {
             return props.artErr("Artist doesn't have a label. Please type a different artist")
-            //errModal = <ArtistError errMess={props.error.error}/>
         }
         const ranLabels = ['XL Recordings', 'Parlophone', 
         'Dreamville', 'Def Jam Recordings', 'Aftermath Entertainment', 
@@ -208,10 +207,13 @@ const Game = props => {
     //value gets updated once ajax call
     //then form is valid => button
 
-    console.log('error')
-    console.log(props.error)
+    if (artistForm.value === ''){
+        props.artLoad()
+        // errModal = <ArtistError errMess={props.error.error}/>
+        // props.artErr("Oopsies")
+    }
 
-    if (props.error && artistForm.value !== ''){
+    if (artistForm.value !== '' && props.error){
         errModal = <ArtistError errMess={props.error.error}/>
     }
 
@@ -341,8 +343,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         addArtist: (artist) => dispatch(artistActions.addArtistThunk(artist)),
-        scoreAdd:  () => dispatch(scoreActions.addScore()),
         artErr: (err) => dispatch(artistActions.error(err)),
+        artLoad: () => dispatch(artistActions.loading()),
+        scoreAdd:  () => dispatch(scoreActions.addScore()),
         quesClick1: (optNum) => dispatch(questionActions.answerQuestion1(optNum)),
         quesClick2: (optNum) => dispatch(questionActions.answerQuestion2(optNum)),
         quesClick3: (optNum) => dispatch(questionActions.answerQuestion3(optNum)),        
