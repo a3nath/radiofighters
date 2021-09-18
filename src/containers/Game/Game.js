@@ -64,6 +64,8 @@ const Game = props => {
         event.preventDefault();
         setArtist(artistForm.value)    
     };
+
+    let errModal = null;
    
     useEffect(() => {
         props.addArtist(artist)
@@ -103,6 +105,25 @@ const Game = props => {
             if (ranArr.indexOf(ranOption) === -1 && ranOption !== intAns && ranOption >= 1) ranArr.push(ranOption)
         }  
         optionArr.push({'num': 0, 'value': intAns, 'answer': true })
+        return optionArr = [...optionArr, ...optionGen(ranArr)]
+    }
+
+    const randomBand = ans => {
+        if (ans === null) {
+            return props.artErr("Artist doesn't have a label. Please type a different artist")
+            //errModal = <ArtistError errMess={props.error.error}/>
+        }
+        const ranLabels = ['XL Recordings', 'Parlophone', 
+        'Dreamville', 'Def Jam Recordings', 'Aftermath Entertainment', 
+        'Republic Records','EMI', 'Interscope Records', 'Anthem Records', 'Atlantic'];
+        let ranArr = [];
+        let bandLabel = ans;
+            while(ranArr.length < 3){
+                let ranOption = ranLabels[Math.floor(Math.random() * ranLabels.length)]
+                if (ranArr.indexOf(ranOption) === -1 && bandLabel) ranArr.push(ranOption)
+        }
+        let optionArr = [];
+        optionArr.push({'num': 0, 'value': bandLabel, 'answer': true })
         return optionArr = [...optionArr, ...optionGen(ranArr)]
     }
 
@@ -187,31 +208,30 @@ const Game = props => {
     //value gets updated once ajax call
     //then form is valid => button
 
-    let errModal = null;
+    console.log('error')
+    console.log(props.error)
 
     if (props.error && artistForm.value !== ''){
         errModal = <ArtistError errMess={props.error.error}/>
-        console.log('ERROR console')
-        console.log(props.error)
-        console.log(props.error.error)
     }
 
     let quesAnsArr = [];
     let trivia = null;
-    let artLabel = props.artist.strLabel
-
-    const ranLabels = ['XL Recordings', 'Parlophone', 'Dreamville', 'Def Jam Recordings', 'Aftermath Entertainment', 'Republic Records','EMI', 'Interscope Records', 'Anthem Records', 'Atlantic']
 
     if (props.artist && props.albums) {
+         
         let album = getRandomAlbum(props.albums)
-        // // //sel random Album
-        // // //get Album Year
         const albumName = album.strAlbum
         const albumYear = parseInt(album.intYearReleased)
+        const artLabel = props.artist.strLabel
+
+        const q3 = 'What is the bands label?'
+
+     
         quesAnsArr = [
             [{'question': 'What year was the band/artist formed?'}, {'answer': props.artist.intFormedYear}], 
-            [{'question': `What year was the album ${albumName} released?`}, {'answer':albumYear }],
-            [{'question': 'How many members are in the band?'},{'answer': props.artist.intMembers}]
+            [{'question': `What year was the album ${albumName} released?`}, {'answer':albumYear }]
+            //,[{'question': 'How many members are in the band?'},{'answer': props.artist.intMembers}]
         ]
         let triviaArr = quesAnsArr.map((quesAns, index) => {
             let [ques, ans] = quesAns
@@ -220,6 +240,12 @@ const Game = props => {
             [{'num': index + 1,'text': ques.question}, shuffleArray( randomGen(ans.answer))]
             )
         })
+
+        triviaArr.push([{'num': 3,'text': q3}, shuffleArray( randomBand(artLabel))])
+
+        console.log('game')
+        console.log(props.triviaArr)
+
         trivia = <Trivia 
             // albums={props.albums}  
             // q1={props.ques1} 
@@ -316,6 +342,7 @@ const mapDispatchToProps = dispatch => {
     return {
         addArtist: (artist) => dispatch(artistActions.addArtistThunk(artist)),
         scoreAdd:  () => dispatch(scoreActions.addScore()),
+        artErr: (err) => dispatch(artistActions.error(err)),
         quesClick1: (optNum) => dispatch(questionActions.answerQuestion1(optNum)),
         quesClick2: (optNum) => dispatch(questionActions.answerQuestion2(optNum)),
         quesClick3: (optNum) => dispatch(questionActions.answerQuestion3(optNum)),        
