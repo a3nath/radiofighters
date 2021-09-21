@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Options from '../Options/Options'
+
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '../UI/Button/Button';
 
 export const Question1 = props => {
@@ -16,7 +18,7 @@ export const Question1 = props => {
                     <div>
                         {quesText}
                     </div>
-                    <div>
+                    <ButtonGroup variant='outlined' aria-label='options button group'>
                         <Options 
                             ques={quesNum} 
                             options={opt} 
@@ -26,7 +28,7 @@ export const Question1 = props => {
                             // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
                             clicked={props.radioClick}
                         />
-                    </div>
+                    </ButtonGroup >
                 </div>
             )
         })
