@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 //import material Ui
+import Button from '@mui/material/Button';
 
-import Button from  '../../components/UI/Button/Button';
+// import Button from  '../../components/UI/Button/Button';
 import Input from '../../components/Input/Input';
 import Trivia from '../../components/Trivia/Trivia';
 import Modal from '../../components/UI/Modal/Modal';
@@ -303,7 +304,7 @@ const Game = props => {
             <div>
                 <form onSubmit={artistHandler}>
                     {inputElement}
-                    <Button disabled={!formValid} BtnType='Success'>Submit</Button>
+                    <Button variant='contained' disabled={artistForm.value === '' } BtnType='Success'>Submit</Button>
                 </form>
                 {trivia}
                 {errModal}

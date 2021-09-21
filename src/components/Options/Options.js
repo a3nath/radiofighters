@@ -3,7 +3,7 @@ import React from 'react';
 import Option from './Option/Option';
 import classes from './Options.module.css';
 
-import Button from '../UI/Button/Button';
+import Button from '@mui/material/Button';
 
 
 
@@ -11,9 +11,13 @@ import Button from '../UI/Button/Button';
 const Options = props => { 
 
     return props.options.map((option,index) => {
-        return  (
-            <div className={classes.radioContainer}>
-                <label>
+        return  ( 
+            <Button variant='outlined' data-tag={option.num} onClick={() => {props.clicked}}>
+                {option.value} 
+            </Button>
+
+            /*<div className={classes.radioContainer}>
+                                 <label>
                     <input
                             type='radio' 
                             id={option.num}
@@ -23,9 +27,8 @@ const Options = props => {
                             name={props.ques}
                             onChange={props.clicked}
                     />
-                    {option.value}
-                </label>
-            </div>
+                </label> 
+            </div> */
         )
         
         // <Option 

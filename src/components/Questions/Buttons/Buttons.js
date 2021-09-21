@@ -1,7 +1,9 @@
+import Button from '@mui/material/Button';
+
 export const PrevButton = props => {
-    return <button onClick={props.clicked}>{props.children}</button>
+    return <Button variant="contained" clicked={props.clicked}>{props.children}</Button>
 }
 
 export const NextButton = props => {
-    return <button onClick={props.clicked}>{props.chikdren}</button>
+    return <Button variant='contained' clicked={props.clicked}>{props.children}</Button>
 }

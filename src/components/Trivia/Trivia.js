@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import Button from '@mui/material/Button';
 
 import classes from './Trivia.module.css'
 import Options from '../Options/Options';
 import Spinner from '../UI/Spinner/Spinner';
-import Button from '../UI/Button/Button';
 import { Link } from 'react-router-dom';
 import {Question1, Question2, Question3} from '../Questions/Question';
 import {PrevButton, NextButton} from '../Questions/Buttons/Buttons';
@@ -56,9 +56,6 @@ const Trivia = props => {
                 <Question3 quesArr3={[props.trivArr[2]]} step={props.currStep} radioClick={props.radioClick3}/>
                 {/* {previousButton} */}
                 {nextButton}
-                {/* <Link to='/checkout'>
-                <Button disab={props.currStep === 3 ? false : true} BtnType='Success'>Submit Answers</Button>
-                </Link> */}
             </form>
            {/* <button disab={!(props.q1 && props.q2 && props.q3)} onClick={props.modalShow}>Submit Answer</button> */}
         </div>
