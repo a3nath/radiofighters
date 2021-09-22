@@ -7,9 +7,9 @@ import Button from '@mui/material/Button';
 
 
 const Options = props => { 
-    return props.options.map((option,key) => {
+    return props.options.map((option,index) => {
         return (
-                <Button variant='outlined' data-tag={option.num} onClick={() => props.clicked}>
+                <Button key={index} variant='outlined' data-tag={option.num} onClick={() => props.clicked}>
                     {option.value}
                 </Button>
         )}

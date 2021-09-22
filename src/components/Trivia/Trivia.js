@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@mui/material/Button';
 
@@ -16,32 +16,31 @@ const Trivia = props => {
         event.preventDefault();
         // console.log('props.modalShow')
         // console.log(props.modalShow)
-        // props.modalShow()
-        
+        // props.modalShow()      
     }
     
     let currentStep = props.currStep;
     let previousButton = null;
     let nextButton = null;
   
-    if(currentStep !==1) {
-        previousButton =
-            <PrevButton 
-                className="btn btn-secondary" 
-                type="button" clicked={props.prevBtn}>
-                Previous 
-            </PrevButton>
+    // if(currentStep !==1) {
+    //     previousButton =
+    //         <PrevButton 
+    //             className="btn btn-secondary" 
+    //             type="button" clicked={props.prevBtn}>
+    //             Previous 
+    //         </PrevButton>
 
-    }
+    // }
  
     if(currentStep !==3) {
         nextButton =
-            <NextButton 
-                className="btn btn-secondary" 
-                type="button" clicked={props.nextBtn}>
-                Next 
-            </NextButton>
-
+            // <NextButton 
+            //     className="btn btn-secondary" 
+            //     type="button" clicked={props.nextBtn}>
+            //     Next 
+            // </NextButton>
+            <Button variant='contained' onClick={props.nextBtn}>Next</Button>
     }
 
     console.log('trivArr')

@@ -36,7 +36,6 @@ const Game = props => {
     const [formValid, setFormValid] = useState(false);
     const [modal, setModal] = useState(false);
     const [currentStep, setCurrentStep] = useState(1)
-
     const modalShowHandler = () => {
         console.log('modal show triggered')
         setModal(true);
@@ -46,8 +45,10 @@ const Game = props => {
         setModal(false);
     }
     const [artist, setArtist] = useState('')
-    // const [albums, setAlbums] = useState([])
-
+    const [radio1, setRadio1] = useState('')
+    const [radio1Opt, setRadio1Opt] = useState('')
+    const [radio2, setRadio2] = useState('')
+    const [radio3, setRadio3] = useState('')
 
     //form input handler, triggers when submit form
     const inputHandler = event => {
@@ -56,19 +57,13 @@ const Game = props => {
         tempForm.value = event.target.value;
         tempForm.touched = true;
         setArtistForm(tempForm)
-        //dispatch input typed value to fetch
-        //props.addArtist(event.target.value)
     };   
-    
-    //list will get value from artist form value
 
     const artistHandler = event => {
         event.preventDefault();
         setArtist(artistForm.value)    
     };
 
-    let errModal = null;
-   
     useEffect(() => {
         props.addArtist(artist)
     }, [artist])
@@ -78,8 +73,6 @@ const Game = props => {
         const numAblums = validAlbum.length;
         const album = validAlbum[Math.floor(Math.random() * numAblums)]
         return album
-        
-        // [album.strAlbum, parseInt(album.intYearReleased)]
     }
     
     function shuffleArray(array) {
@@ -128,14 +121,8 @@ const Game = props => {
         return optionArr = [...optionArr, ...optionGen(ranArr)]
     }
 
-    const [radio1, setRadio1] = useState('')
-    const [radio1Opt, setRadio1Opt] = useState('')
-
-    const [radio2, setRadio2] = useState('')
-    const [radio3, setRadio3] = useState('')
-    
     const radioHandler1 = event => {
-        props.quesClick2(parseInt(event.target.dataset.tag))
+        props.quesClick(parseInt(event.target.dataset.tag))
         // setRadio1(event.target.value)
         // setRadio1Opt(event.target.dataset.tag)
     }
@@ -169,51 +156,14 @@ const Game = props => {
     currStep = currStep <= 1? 1: currStep - 1
     setCurrentStep(currStep)
   }
-
-/*
-* the functions for our button
-*/
-// const previousButton = () => {
-//   let currentStep = currentStep;
-//   if(currentStep !==1){
-//       <Button type="button" clicked={_prev}>Previous</Button>
-//   }
-// }
-
-// const nextButton = () => {
-//   let currentStep = currentStep;
-//   if(currentStep <2){
-//     return (
-//       <button 
-//         className="btn btn-primary float-right" 
-//         type="button" onClick={_next}>
-//       Next
-//       </button>        
-//     )
-//   }
-//   return null;
-// }
-
-    // let scoreSummary = null
-
-    // if (props.ques1 && props.ques2) {
-    //     scoreSummary = 
-    //     <Score
-    //         q1Opt={props.ques1Opt}
-    //         q2Opt={props.ques2Opt}
-    //     />
-    // }
-
-    //form valid
-    //create dummy form
-    //value gets updated once ajax call
-    //then form is valid => button
-
     if (artistForm.value === ''){
         props.artLoad()
         // errModal = <ArtistError errMess={props.error.error}/>
         // props.artErr("Oopsies")
     }
+
+
+    let errModal = null;
 
     if (artistForm.value !== '' && props.error){
         errModal = <ArtistError errMess={props.error.error}/>
@@ -294,7 +244,7 @@ const Game = props => {
     if (currentStep === 3) {
         submit = 
         <Link to='/checkout'>
-            <Button BtnType='Success'>Submit Answers</Button>
+            <Button>Submit Answers</Button>
         </Link>
     }
 
@@ -304,7 +254,7 @@ const Game = props => {
             <div>
                 <form onSubmit={artistHandler}>
                     {inputElement}
-                    <Button variant='contained' disabled={artistForm.value === '' } BtnType='Success'>Submit</Button>
+                    <Button variant='contained' disabled={artistForm.value === '' }>Submit</Button>
                 </form>
                 {trivia}
                 {errModal}

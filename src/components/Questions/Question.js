@@ -6,9 +6,10 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '../UI/Button/Button';
 
 export const Question1 = props => {
+    console.log(props.step)
     if (props.step !== 1) return null
     console.log(props.quesArr1)
-        return props.quesArr1.map((quesOpt) => {
+        return props.quesArr1.map((quesOpt, index) => {
             let [ques, opt] = quesOpt;
             let quesNum = ques.num;
             let quesText = ques.text;
@@ -18,7 +19,7 @@ export const Question1 = props => {
                     <div>
                         {quesText}
                     </div>
-                    <ButtonGroup variant='outlined' aria-label='options button group'>
+                    <ButtonGroup key={index} variant='outlined' aria-label='options button group'>
                         <Options 
                             ques={quesNum} 
                             options={opt} 
@@ -35,7 +36,6 @@ export const Question1 = props => {
 }
 
 export const Question2 = props => {
-    console.log(props.quesArr2)
     if (props.step !== 2) return null
         return props.quesArr2.map((quesOpt) => {
             let [ques, opt] = quesOpt;
