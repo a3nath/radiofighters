@@ -1,0 +1,11 @@
+.Button:hover{
+    background-color:green;
+}
+
+.Button:focus{
+    background-color:red;
+}
+
+.Button:active{
+    background-color: indigo;
+}

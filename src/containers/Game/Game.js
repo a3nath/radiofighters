@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 // import Button from  '../../components/UI/Button/Button';
 import Input from '../../components/Input/Input';
 import Trivia from '../../components/Trivia/Trivia';
-import Modal from '../../components/UI/Modal/Modal';
-import Score from '../../components/Score/Score';
+// import Modal from '../../components/UI/Modal/Modal';
+// import Score from '../../components/Score/Score';
 import * as artistActions from '../../store/actionCreators/artistActions';
 import * as scoreActions from '../../store/actionCreators/scoreActions';
 import * as questionActions from '../../store/actionCreators/questionActions';
@@ -122,7 +122,7 @@ const Game = props => {
     }
 
     const radioHandler1 = event => {
-        props.quesClick(parseInt(event.target.dataset.tag))
+        props.quesClick1(parseInt(event.target.dataset.tag))
         // setRadio1(event.target.value)
         // setRadio1Opt(event.target.dataset.tag)
     }
@@ -259,16 +259,6 @@ const Game = props => {
                 {trivia}
                 {errModal}
                 {submit}
-                {/* <Modal 
-                    modalOpen={modal}
-                    modalClose={modalCloseHandler}    
-                >
-                    {scoreSummary}
-                </Modal> */}
-                {/* artist needs to load before sending it to Trivia component */}
-                {/* <Trivia artist={props.artist}/> */}
-                {/* artistList gets list of artists from state*/}
-                {/* <ArtistList/> +*/}
             </div>
         </div>
     );

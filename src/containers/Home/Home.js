@@ -1,6 +1,7 @@
 import {React, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-import Button from '../../components/UI/Button/Button'
+import Button from '@mui/material/Button';
+
 import classes from './Home.module.css';
 
 
@@ -15,28 +16,12 @@ const Home = props => {
         props.history.replace('/tutorial')
     }
 
-    const main = props => {
-        <>
-            <Button clicked={navigatePlay}>Play</Button>
-            <Button clicked={navigateTutorial}>Tutorial</Button>
-        </>
-    }
-
-    const team = props => {
-        <>
-            {/* team members */}
-        </>
-    }   
-
-
     return (
         <>
             <h1>WELCOME to the HOME Page!!!! SUCH #WOW</h1>
             <div className='mainSection'>
-                <Button clicked={navigatePlay}>Play</Button>
-                <Button clicked={navigateTutorial}>Tutorial</Button>
+            <Button variant='contained' onClick={navigatePlay}>Play</Button>
             </div>
-            <div className='team'>{team}</div>
         </>
     )
 }

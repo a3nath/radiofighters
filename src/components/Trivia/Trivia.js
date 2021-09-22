@@ -40,7 +40,7 @@ const Trivia = props => {
             //     type="button" clicked={props.nextBtn}>
             //     Next 
             // </NextButton>
-            <Button variant='contained' onClick={props.nextBtn}>Next</Button>
+            <Button variant='contained' onClick={props.nextBtn} className={classes.Button}>Next</Button>
     }
 
     console.log('trivArr')
