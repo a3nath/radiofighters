@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import Button from '@mui/material/Button';
 
 import classes from './Trivia.module.css'
 import Options from '../Options/Options';
 import Spinner from '../UI/Spinner/Spinner';
-import Button from '../UI/Button/Button';
 import { Link } from 'react-router-dom';
 import {Question1, Question2, Question3} from '../Questions/Question';
 import {PrevButton, NextButton} from '../Questions/Buttons/Buttons';
@@ -16,32 +16,31 @@ const Trivia = props => {
         event.preventDefault();
         // console.log('props.modalShow')
         // console.log(props.modalShow)
-        // props.modalShow()
-        
+        // props.modalShow()      
     }
     
     let currentStep = props.currStep;
     let previousButton = null;
     let nextButton = null;
   
-    if(currentStep !==1) {
-        previousButton =
-            <PrevButton 
-                className="btn btn-secondary" 
-                type="button" clicked={props.prevBtn}>
-                Previous 
-            </PrevButton>
+    // if(currentStep !==1) {
+    //     previousButton =
+    //         <PrevButton 
+    //             className="btn btn-secondary" 
+    //             type="button" clicked={props.prevBtn}>
+    //             Previous 
+    //         </PrevButton>
 
-    }
+    // }
  
     if(currentStep !==3) {
         nextButton =
-            <NextButton 
-                className="btn btn-secondary" 
-                type="button" clicked={props.nextBtn}>
-                Next 
-            </NextButton>
-
+            // <NextButton 
+            //     className="btn btn-secondary" 
+            //     type="button" clicked={props.nextBtn}>
+            //     Next 
+            // </NextButton>
+            <Button variant='contained' onClick={props.nextBtn} className={classes.Button}>Next</Button>
     }
 
     console.log('trivArr')
@@ -56,9 +55,6 @@ const Trivia = props => {
                 <Question3 quesArr3={[props.trivArr[2]]} step={props.currStep} radioClick={props.radioClick3}/>
                 {/* {previousButton} */}
                 {nextButton}
-                {/* <Link to='/checkout'>
-                <Button disab={props.currStep === 3 ? false : true} BtnType='Success'>Submit Answers</Button>
-                </Link> */}
             </form>
            {/* <button disab={!(props.q1 && props.q2 && props.q3)} onClick={props.modalShow}>Submit Answer</button> */}
         </div>
