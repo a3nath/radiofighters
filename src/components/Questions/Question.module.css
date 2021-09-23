@@ -3,10 +3,10 @@
 }
 
 .Question{
-    margin: 15px auto;
+    margin: 35px auto;
 }
 
 .Options{
- width: 60%;  
  display: block; 
+ margin-top: 20px;
 }
