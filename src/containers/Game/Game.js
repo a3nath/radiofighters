@@ -14,6 +14,7 @@ import * as questionActions from '../../store/actionCreators/questionActions';
 import * as modalActions from '../../store/actionCreators/modalActions';
 import ArtistError from '../../components/ArtistError/ArtistError';
 import { Link } from 'react-router-dom';
+import classes from './Game.module.css';
 
 
 const Game = props => {
@@ -249,10 +250,11 @@ const Game = props => {
     }
 
     return (
-        <div>
-            <h1>Hello, this is Game Page</h1>
+        <div className={classes.Game}>
+            <h1>Hello, Welcome!</h1>
+            <h3>To get started, enter band name below</h3>
             <div>
-                <form onSubmit={artistHandler}>
+                <form onSubmit={artistHandler} className={classes.artForm}>
                     {inputElement}
                     <Button variant='contained' disabled={artistForm.value === '' }>Submit</Button>
                 </form>

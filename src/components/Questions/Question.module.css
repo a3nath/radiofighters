@@ -1,0 +1,12 @@
+.questionBox{
+    margin: 30px auto 20px;
+}
+
+.Question{
+    margin: 15px auto;
+}
+
+.Options{
+ width: 60%;  
+ display: block; 
+}

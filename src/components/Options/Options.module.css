@@ -1,11 +1,17 @@
-.Button:hover{
+.Option:hover{
     background-color:green;
 }
 
-.Button:focus{
+.Option:focus{
     background-color:red;
 }
 
-.Button:active{
+.Option:active{
     background-color: indigo;
+}
+
+.Option{
+   width: 40%;
+    text-align: center;
+    margin:5px 5px;;
 }

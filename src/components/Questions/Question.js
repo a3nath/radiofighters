@@ -4,22 +4,20 @@ import Options from '../Options/Options'
 
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '../UI/Button/Button';
+import classes from './Question.module.css'
 
 export const Question1 = props => {
-    console.log(props.step)
     if (props.step !== 1) return null
-    console.log(props.quesArr1)
         return props.quesArr1.map((quesOpt, index) => {
             let [ques, opt] = quesOpt;
             let quesNum = ques.num;
             let quesText = ques.text;
             return (
-                <div>
-                 {/* //show picture */}
-                    <div>
+                <div className={classes.questionBox}>
+                    <div className={classes.Question}>
                         {quesText}
                     </div>
-                    <ButtonGroup key={index} variant='outlined' aria-label='options button group'>
+                    <ButtonGroup key={index} variant='outlined' aria-label='options button group' className={classes.Options}>
                         <Options 
                             ques={quesNum} 
                             options={opt} 
