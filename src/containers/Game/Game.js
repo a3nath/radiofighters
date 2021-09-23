@@ -115,7 +115,7 @@ const Game = props => {
         let bandLabel = ans;
             while(ranArr.length < 3){
                 let ranOption = ranLabels[Math.floor(Math.random() * ranLabels.length)]
-                if (ranArr.indexOf(ranOption) === -1 && bandLabel) ranArr.push(ranOption)
+                if (ranArr.indexOf(ranOption) === -1 && ranOption !== bandLabel) ranArr.push(ranOption)
         }
         let optionArr = [];
         optionArr.push({'num': 0, 'value': bandLabel, 'answer': true })
@@ -141,10 +141,6 @@ const Game = props => {
         props.quesClick1(parseInt(radio1))}
         ,[radio1]
     )
-
-    // const [albumName, setAlbum] = useState('')
-    // const [albumYear, setAlbumYear] = useState('')
-    // const [triviaArr, setTriviaArr] = useState([])
 
   const _next = () => {
     let currStep = currentStep
