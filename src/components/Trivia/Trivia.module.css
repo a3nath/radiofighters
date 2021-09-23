@@ -9,3 +9,13 @@
 .Button:active{
     background-color: indigo;
 }
+
+.artImg{
+    min-width:50%;
+    max-width: 600px;
+}
+
+.Trivia{
+    margin: 50px auto;
+}
+

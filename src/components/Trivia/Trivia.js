@@ -48,7 +48,7 @@ const Trivia = props => {
 
     return (
         <div className={classes.Trivia}>
-            <img src={props.img}/>
+            <img className={classes.artImg} src={props.img}/>
             <form onSubmit={triviaHandler}>
                 <Question1 quesArr1={[props.trivArr[0]]} step={props.currStep} radioClick={props.radioClick1}/>
                 <Question2 quesArr2={[props.trivArr[1]]} step={props.currStep} radioClick={props.radioClick2}/>
