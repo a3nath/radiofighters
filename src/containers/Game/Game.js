@@ -123,24 +123,22 @@ const Game = props => {
     }
 
     const radioHandler1 = event => {
-        props.quesClick1(parseInt(event.target.dataset.tag))
-        // setRadio1(event.target.value)
-        // setRadio1Opt(event.target.dataset.tag)
+        props.quesClick1({optNum: parseInt(event.target.dataset.tag), optValue: event.target.value, ans: props.artist.intFormedYear})
     }
 
     const radioHandler2 = event => {
-        props.quesClick2(parseInt(event.target.dataset.tag))
+        props.quesClick2({optNum: parseInt(event.target.dataset.tag), optValue: event.target.value, ans: props.albumYear})
     }
 
     const radioHandler3 = event => {
-        props.quesClick3(parseInt(event.target.dataset.tag))
+        props.quesClick3({optNum: parseInt(event.target.dataset.tag), optValue: event.target.value, ans: props.artLabel})
     }
     
     //need to send option num not value
-    useEffect(() => {
-        props.quesClick1(parseInt(radio1))}
-        ,[radio1]
-    )
+    // useEffect(() => {
+    //     props.quesClick1(parseInt(radio1))}
+    //     ,[radio1]
+    // )
 
   const _next = () => {
     let currStep = currentStep
@@ -168,20 +166,24 @@ const Game = props => {
 
     let quesAnsArr = [];
     let trivia = null;
+    let album = {}
+    let albumName = ''
+    let albumYear = 0
+    let artLabel = ''
 
     if (props.artist && props.albums) {
          
-        let album = getRandomAlbum(props.albums)
-        const albumName = album.strAlbum
-        const albumYear = parseInt(album.intYearReleased)
-        const artLabel = props.artist.strLabel
+        album = getRandomAlbum(props.albums)
+        albumName = album.strAlbum
+        albumYear = parseInt(album.intYearReleased)
+        artLabel = props.artist.strLabel
 
-        const q3 = 'What is the bands label?'
+        const q3 = "Who is the band's label?"
 
      
         quesAnsArr = [
-            [{'question': 'What year was the band/artist formed?'}, {'answer': props.artist.intFormedYear}], 
-            [{'question': `What year was the album ${albumName} released?`}, {'answer':albumYear }]
+            [{'question': `What year was ${props.artist.strArtist} formed?`}, {'answer': props.artist.intFormedYear}], 
+            [{'question': `When was the album ${albumName} released?`}, {'answer':albumYear }]
             //,[{'question': 'How many members are in the band?'},{'answer': props.artist.intMembers}]
         ]
         let triviaArr = quesAnsArr.map((quesAns, index) => {
@@ -193,9 +195,6 @@ const Game = props => {
         })
 
         triviaArr.push([{'num': 3,'text': q3}, shuffleArray( randomBand(artLabel))])
-
-        console.log('game')
-        console.log(props.triviaArr)
 
         trivia = <Trivia 
             // albums={props.albums}  
@@ -241,7 +240,7 @@ const Game = props => {
     if (currentStep === 3) {
         submit = 
         <Link to='/checkout'>
-            <Button>Submit Answers</Button>
+            <Button variant='contained'>Submit Answers</Button>
         </Link>
     }
 

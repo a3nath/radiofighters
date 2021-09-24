@@ -54,12 +54,10 @@ export const addArtistThunk = (artist) => {
             .then(
                 data => {console.log(data)
                     if (data[0].artists === null) {
-                        console.log('response art not found')
                         return dispatch(error({error:'Artist Not Found'}))
                     }
                     else if (data[1].album === null){
-                        console.log('response album not found')
-                        return dispatch(error({error:'Artist Not Found. Please check artist spelling or try another artist'}))
+                        return dispatch(error({error:'Artist Not Found'}))
                     }
                     else{
                         return dispatch(addArtist(data))
