@@ -127,11 +127,11 @@ const Game = props => {
     }
 
     const radioHandler2 = event => {
-        props.quesClick2({optNum: parseInt(event.target.dataset.tag), optValue: event.target.value, ans: props.albumYear})
+        props.quesClick2({optNum: parseInt(event.target.dataset.tag), optValue: event.target.value, ans: albumYear})
     }
 
     const radioHandler3 = event => {
-        props.quesClick3({optNum: parseInt(event.target.dataset.tag), optValue: event.target.value, ans: props.artLabel})
+        props.quesClick3({optNum: parseInt(event.target.dataset.tag), optValue: event.target.value, ans: artLabel})
     }
     
     //need to send option num not value
