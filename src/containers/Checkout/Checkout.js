@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Button from '../../components/UI/Button/Button';
+import Button from '@mui/material/Button';
 import Modal from '../../components/UI/Modal/Modal';
 import * as modalActions from '../../store/actionCreators/modalActions';
 import classes from './Checkout.module.css'
@@ -11,7 +11,11 @@ import classes from './Checkout.module.css'
 
 const Checkout = props => {
     
-    const scoreArr = [props.q1Opt, props.q2Opt, props.q3Opt]   
+    const q1Opt = props.q1Opt;
+    const q2Opt = props.q2Opt;
+    const q3Opt = props.q3Opt;
+
+    const scoreArr = [q1Opt.optNum, q2Opt.optNum, q3Opt.optNum]   
     const finalScore = scoreArr.filter(opt => opt === 0).length
     
     const playAgain = () => {
@@ -40,21 +44,16 @@ const Checkout = props => {
                 {/* array of question, your answer and correct answer with styling */}
             </div>
           
-            <Button clicked={playAgain}>Play Again</Button>
+            <Button variant='contained' onClick={playAgain} className={classes.Button}>Play Again</Button>
             <Link to ={'/home'}>
-                <Button clicked={goHome}></Button>
+                <Button variant='contained' onClick={goHome} className={classes.Home}>Home</Button>
             </Link>
         </React.Fragment>
 
     return (
-        // <Modal
-        //     modalOpen={modal}
-        //     modalClose={modalCloseHandler}
-        // >
-        <div>
+        <div className={classes.Checkout}>
             {modalSummary}
         </div>  
-        // </Modal>
     )
 
 }

@@ -10,7 +10,11 @@
     background-color: indigo;
 }
 
+.OptionGrid{
+    width:150px;
+}
+
 .Option{
-    width: 100%;
     height:50px;
+    width: 100%;
 }
