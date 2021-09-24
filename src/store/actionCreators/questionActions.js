@@ -11,9 +11,9 @@ export const answerQuestion1 = ({optNum, optValue, ans}) => {
 }
 
 export const answerQuestion2 = ({optNum, optValue, ans}) => {
-    return {type: actionTypes.ANSWER_QUESTION2, option:optNum}
+    return {type: actionTypes.ANSWER_QUESTION2, optNum, optValue, ans}
 }
 
 export const answerQuestion3 = ({optNum, optValue, ans}) => {
-    return {type: actionTypes.ANSWER_QUESTION3, option:optNum}
+    return {type: actionTypes.ANSWER_QUESTION3, optNum, optValue, ans}
 }

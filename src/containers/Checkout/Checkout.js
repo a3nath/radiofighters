@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Modal from '../../components/UI/Modal/Modal';
 import * as modalActions from '../../store/actionCreators/modalActions';
+import CheckoutSummary from './CheckoutSummary.js/CheckoutSummary';
 import classes from './Checkout.module.css'
 
 
@@ -14,7 +15,7 @@ const Checkout = props => {
     const q1Opt = props.q1Opt;
     const q2Opt = props.q2Opt;
     const q3Opt = props.q3Opt;
-
+    const optArr = [q1Opt, q2Opt, q3Opt];
     const scoreArr = [q1Opt.optNum, q2Opt.optNum, q3Opt.optNum]   
     const finalScore = scoreArr.filter(opt => opt === 0).length
     
@@ -36,14 +37,20 @@ const Checkout = props => {
         setModal(false);
     }
 
+    let summary = optArr.map((opt,index) => {
+        return (
+                <CheckoutSummary index={index} option={opt}/>
+        )
+    })
+
+
     let modalSummary = 
         <React.Fragment>
             <h1>Thank you for Playing!</h1>
             <p>You answered {finalScore} questions correctly  </p>
-            <div className={classes.quesBlock}>
-                {/* array of question, your answer and correct answer with styling */}
+            <div className={classes.QuesBlock}>
+                {summary}
             </div>
-          
             <Button variant='contained' onClick={playAgain} className={classes.Button}>Play Again</Button>
             <Link to ={'/home'}>
                 <Button variant='contained' onClick={goHome} className={classes.Home}>Home</Button>
