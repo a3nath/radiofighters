@@ -7,8 +7,6 @@ import './App.css';
 import * as actionCreators from './store/actionCreators/artistActions';
 import Home from './containers/Home/Home';
 import Game from './containers/Game/Game';
-import Tutorial from './containers/Tutorial/Tutorial';
-import Layout from './components/Layout/Layout';
 import Checkout from './containers/Checkout/Checkout';
 
 
@@ -18,7 +16,6 @@ const App = props =>  {
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route path='/game' component={Game}/>
-      <Route path='/tutorial' component={Tutorial}/>
       <Route path='/checkout' component={Checkout}/>
       <Redirect to='/'/>
     </Switch> 
@@ -26,7 +23,6 @@ const App = props =>  {
   return (
     <div>
       <BrowserRouter>
-        <Layout/>
           {routes}
       </BrowserRouter>
     </div>
