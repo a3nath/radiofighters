@@ -44,8 +44,8 @@ const Checkout = props => {
     })
 
 
-    let modalSummary = 
-        <React.Fragment>
+    let checkout =
+        <div className={classes.checkoutBlock}>
             <h1>Thank you for Playing!</h1>
             <p>You answered {finalScore} questions correctly  </p>
             <div className={classes.QuesBlock}>
@@ -53,13 +53,13 @@ const Checkout = props => {
             </div>
             <Button variant='contained' onClick={playAgain} className={classes.Button}>Play Again</Button>
             <Link to ={'/home'}>
-                <Button variant='contained' onClick={goHome} className={classes.Home}>Home</Button>
+                <Button variant='contained' onClick={goHome} className={classes.Button}>Home</Button>
             </Link>
-        </React.Fragment>
+        </div>
 
     return (
         <div className={classes.Checkout}>
-            {modalSummary}
+            {checkout}
         </div>  
     )
 
