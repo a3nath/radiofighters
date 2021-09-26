@@ -1,3 +1,4 @@
+
 .Checkout{
     margin: 80px auto;
     text-align: center;
@@ -12,9 +13,11 @@
 } */
 
 .QuesBlock{
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
-.Button{
-    margin: 2px;
+.checkoutBlock .Button{
+    margin: 0 5px; 
 }
+
+
