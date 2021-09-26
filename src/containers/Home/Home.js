@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Button from '@mui/material/Button';
 
 import classes from './Home.module.css';
+import Footer from '../../components/Footer/Footer'
 
 
 
@@ -12,17 +13,15 @@ const Home = props => {
         props.history.replace('/game')
     }
 
-    const navigateTutorial = () => {
-        props.history.replace('/tutorial')
-    }
 
     return (
-        <>
-            <h1>WELCOME to the HOME Page!!!! SUCH #WOW</h1>
+        <div className={classes.Home}>
+            <h1>Welcome to RadioFighters!</h1>
             <div className='mainSection'>
-            <Button variant='contained' onClick={navigatePlay}>Play</Button>
+                <Button variant='contained' onClick={navigatePlay}>Play</Button>
             </div>
-        </>
+            <Footer/>
+        </div>
     )
 }
 
