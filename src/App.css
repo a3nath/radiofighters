@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 
-.App {
-  text-align: center;
+.body {
+  text-align: left;
   font-family: 'Roboto';
+  background-color: #99cef0;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -38,5 +39,7 @@
   }
   to {
     transform: rotate(360deg);
-  }
+  } 
 }
+  */
+

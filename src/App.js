@@ -8,6 +8,7 @@ import * as actionCreators from './store/actionCreators/artistActions';
 import Home from './containers/Home/Home';
 import Game from './containers/Game/Game';
 import Checkout from './containers/Checkout/Checkout';
+import Footer from './components/Footer/Footer'
 
 
 const App = props =>  {
@@ -24,6 +25,7 @@ const App = props =>  {
     <div>
       <BrowserRouter>
           {routes}
+          <Footer/>
       </BrowserRouter>
     </div>
   );

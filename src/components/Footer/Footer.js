@@ -5,18 +5,20 @@ import IconButton from '@mui/material/IconButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart';
 
+import classes from './Footer.module.css'
+
 
 
 
 const Footer = props => {
     return (
-        <Box>
+        <Box className={classes.Footer}>
             <Toolbar>
                 Made with 
                 <IconButton>
-                    <FontAwesomeIcon icon={faHeart} />
+                    <FontAwesomeIcon icon={faHeart} color='maroon'/>
                 </IconButton>
-                    by <a href='https://github.com/a3nath'>Amar Nath</a>
+                    by <a href='https://github.com/a3nath'> Amar Nath</a>
             </Toolbar>
         </Box>
         )
