@@ -13,7 +13,7 @@ const Home = props => {
 
 
     return (
-        <div className={`${classes.Home} body`}>
+        <div className={`${classes.Home}`}>
             <h1>Welcome to RadioFighters!</h1>
             <div className='mainSection'>
                 <Button variant='contained' onClick={navigatePlay}>Play</Button>
