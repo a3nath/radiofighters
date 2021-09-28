@@ -4,7 +4,13 @@
 body {
   text-align: left;
   font-family: 'Roboto';
-  background-color: #99cef0;
+  background-image: url('./assets/Cassette.png');
+  background-size: cover ;
+  /* background-repeat: no-repeat; */
+  margin: 0 10px;
+
+
+
 }
 
 /* .App-logo {
