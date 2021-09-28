@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Button from '@mui/material/Button';
 
 import classes from './Home.module.css';
-import '../../App.css'
+import '../../App.css';
 
 const Home = props => {
 
@@ -13,7 +13,7 @@ const Home = props => {
 
 
     return (
-        <div className={`${classes.Home}`}>
+        <div className={classes.Home}>
             <h1>Welcome to RadioFighters!</h1>
             <div className='mainSection'>
                 <Button variant='contained' onClick={navigatePlay}>Play</Button>

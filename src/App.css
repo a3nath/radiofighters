@@ -1,16 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=spectral:wght@400;500&display=swap');
+
 
 
 body {
   text-align: left;
-  font-family: 'Roboto';
+  font-family: 'Lora', 'Spectral', 'Serif';
   background-image: url('./assets/Cassette.png');
   background-size: cover ;
+  color:#585858;
   /* background-repeat: no-repeat; */
-  margin: 0 10px;
+}
 
-
-
+h3{
+  margin: 0;
 }
 
 /* .App-logo {
