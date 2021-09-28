@@ -13,7 +13,7 @@ import classes from './Footer.module.css'
 const Footer = props => {
     return (
         <Box className={classes.Footer}>
-            <Toolbar>
+            <Toolbar className={classes.ToolbarText}>
                 Made with 
                 <IconButton>
                     <FontAwesomeIcon icon={faHeart} color='maroon'/>
