@@ -1,14 +1,46 @@
 .Game{
     text-align: center;
-    margin: 200px 400px;
     background-color: #fdfdfd;
-    padding: 50px 0px;
     border-radius: 1%;
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
-
 }
 
 .artForm{
     margin: 0 auto;
     text-align: center;
 }
+
+
+@media (min-width: 1400px){
+    .Game{
+        margin: 200px 400px;
+        padding: 50px 0px;
+    }
+}
+
+@media (max-width: 1400px){
+    .Game{
+        margin: 100px 200px;
+        padding: 50px 0px;
+    }
+}
+
+@media (max-width: 800px){
+    .Game{
+        margin: 100px 100px;
+        padding: 20px 20px;
+    }
+}
+
+@media (max-width: 450px){
+    .Game{
+        margin: 50px 50px;
+        padding: 1px 1px;
+    }
+}
+
+h3{
+    margin: 10px 0;
+}
+
+

@@ -3,3 +3,12 @@
     margin: 35px 25px;
     height: 30px;
 }
+
+
+@media (max-width: 650px){
+    .Input{
+        width: 60%;
+        height: 30px;
+        margin: 35px 25px;
+    }
+}
