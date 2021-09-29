@@ -1,0 +1,14 @@
+.QuesBlock{
+    padding: 4px
+}
+
+.Correct{
+    background-color: #ade6bb;
+    padding:0 5px;
+}
+
+.Wrong{
+    background-color: #ef7b7b;
+    padding:0 5px;
+    
+}
