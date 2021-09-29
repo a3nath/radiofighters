@@ -247,7 +247,7 @@ const Game = props => {
 
     return (
         <div className={classes.Game}>
-            <h3>Enter your favourite band below</h3>
+            <h3>Give us your favourite band</h3>
             <div>
                 <form onSubmit={artistHandler} className={classes.artForm}>
                     {inputElement}
