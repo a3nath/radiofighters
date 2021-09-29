@@ -15,6 +15,7 @@ import * as modalActions from '../../store/actionCreators/modalActions';
 import ArtistError from '../../components/ArtistError/ArtistError';
 import { Link } from 'react-router-dom';
 import classes from './Game.module.css';
+import '../../App.css';
 
 
 const Game = props => {
@@ -24,7 +25,7 @@ const Game = props => {
             elementType:'input',
             elementConfig:{
                 type:'text',
-                placeholder:'Artist name'
+                placeholder:'Your favourite band'
             },
             validation:{
                 required:true
@@ -246,8 +247,7 @@ const Game = props => {
 
     return (
         <div className={classes.Game}>
-            <h1>Hello, Welcome!</h1>
-            <h3>To get started, enter band name below</h3>
+            <h3>Give us your favourite band</h3>
             <div>
                 <form onSubmit={artistHandler} className={classes.artForm}>
                     {inputElement}

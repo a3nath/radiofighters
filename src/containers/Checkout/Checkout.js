@@ -7,6 +7,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import * as modalActions from '../../store/actionCreators/modalActions';
 import CheckoutSummary from './CheckoutSummary.js/CheckoutSummary';
 import classes from './Checkout.module.css'
+import '../../App.css'
 
 
 

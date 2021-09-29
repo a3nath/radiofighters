@@ -2,6 +2,20 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: lightblue;
+    background-color: #72bcd4;
     width:100%;
+    text-align: center;
+}
+
+.ToolbarText{
+    justify-content: center;
+}
+
+a{
+    text-decoration: none;
+    text-shadow: 3em;
+    padding: 0 5px;
+    color: #e7f4f8;
+    font-weight: bold;
+
 }
