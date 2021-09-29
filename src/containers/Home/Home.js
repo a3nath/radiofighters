@@ -16,6 +16,8 @@ const Home = props => {
         <div className={classes.Home}>
             <h1>Welcome to RadioFighters!</h1>
             <div className='mainSection'>
+                <p>This is  a trivia game to test your knowledge of your favourite band.</p>
+                <p>Click play to get started!</p>
                 <Button variant='contained' onClick={navigatePlay}>Play</Button>
             </div>
         </div>
