@@ -46,10 +46,10 @@ const Checkout = props => {
 
 
     let checkout =
-        <div className={classes.checkoutBlock}>
+        <div className={classes.CheckoutBlock}>
             <h1>Thank you for Playing!</h1>
             <p>You answered {finalScore} questions correctly  </p>
-            <div className={classes.QuesBlock}>
+            <div className={classes.SumBlock}>
                 {summary}
             </div>
             <Button variant='contained' onClick={playAgain} className={classes.Button}>Play Again</Button>

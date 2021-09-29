@@ -16,10 +16,12 @@
 
 } */
 
-.QuesBlock{
+.CheckoutBlock .Button{
+    margin: 0 5px; 
+}
+
+
+.SumBlock{
     margin: 20px 0;
 }
 
-.checkoutBlock .Button{
-    margin: 0 5px; 
-}
