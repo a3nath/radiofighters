@@ -1,15 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Options from '../Options/Options'
 
 import ButtonGroup from '@mui/material/ButtonGroup';
-import Button from '../UI/Button/Button';
 import classes from './Question.module.css'
 import Grid from '@mui/material/Grid';
-import Spinner from '../UI/Spinner/Spinner';
-
-
-
 
 export const Question1 = props => {
     if (props.step !== 1) return null
@@ -28,9 +22,6 @@ export const Question1 = props => {
                             ques={quesNum} 
                             options={opt} 
                             val={props.radio}
-                            //scoreClicked={props.scoreAdded} 
-                            // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
-                            // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
                             clicked={props.radioClick}
                         />
                         </Grid>
@@ -58,9 +49,6 @@ export const Question2 = props => {
                         <Options 
                             ques={quesNum} 
                             options={opt} 
-                            //scoreClicked={props.scoreAdded} 
-                            // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
-                            // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
                             clicked={props.radioClick}
                         />
                     </Grid>
@@ -86,9 +74,6 @@ export const Question3 = props => {
                         <Options 
                             ques={quesNum} 
                             options={opt} 
-                            //scoreClicked={props.scoreAdded} 
-                            // quesAnsed={quesNum === 1 ? props.ques1 : props.ques2} 
-                            // quesClicked={quesNum === 1 ? props.quesClicked1 : props.quesClicked2}
                             clicked={props.radioClick}
                         />
                         </Grid>
