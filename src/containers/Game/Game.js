@@ -172,7 +172,6 @@ const Game = props => {
             img={props.artist.strArtistClearart ? props.artist.strArtistClearart :  props.artist.strArtistBanner }
             loading={props.loading}
             error={props.error}
-            modalShow={modalShowHandler}
             trivArr = {triviaArr}
             radioClick1={radioHandler1}
             radioClick2={radioHandler2}
