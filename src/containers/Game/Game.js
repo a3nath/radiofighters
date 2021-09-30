@@ -147,11 +147,11 @@ const Game = props => {
     setCurrentStep(currStep)
   }
     
-  const _prev = () => {
-    let currStep = currentStep
-    currStep = currStep <= 1? 1: currStep - 1
-    setCurrentStep(currStep)
-  }
+//   const _prev = () => {
+//     let currStep = currentStep
+//     currStep = currStep <= 1? 1: currStep - 1
+//     setCurrentStep(currStep)
+//   }
     if (artistForm.value === ''){
         props.artLoad()
         // errModal = <ArtistError errMess={props.error.error}/>
@@ -217,7 +217,7 @@ const Game = props => {
             radioClick3={radioHandler3}
             currStep={currentStep}
             nextBtn = {_next}
-            prevBtn = {_prev}
+            // prevBtn = {_prev}
         />
     }
 

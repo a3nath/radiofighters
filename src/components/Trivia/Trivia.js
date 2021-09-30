@@ -43,8 +43,6 @@ const Trivia = props => {
             <Button variant='contained' onClick={props.nextBtn} className={classes.Button}>Next</Button>
     }
 
-    console.log('trivArr')
-    console.log(props.trivArr)
 
     return (
         <div className={classes.Trivia}>
