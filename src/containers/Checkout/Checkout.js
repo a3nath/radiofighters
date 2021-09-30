@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
-import Modal from '../../components/UI/Modal/Modal';
-import * as modalActions from '../../store/actionCreators/modalActions';
 import CheckoutSummary from './CheckoutSummary.js/CheckoutSummary';
 import classes from './Checkout.module.css'
 import '../../App.css'
@@ -26,16 +24,6 @@ const Checkout = props => {
 
     const goHome = () => {
         props.history.replace('/')
-    }
-
-    const [modal, setModal] = useState(false);
-
-    const modalShowHandler = () => {
-        console.log('modal show triggered')
-        setModal(true);
-    }
-    const modalCloseHandler = () => {
-        setModal(false);
     }
 
     let summary = optArr.map((opt,index) => {
@@ -75,11 +63,5 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        modalShow: () => dispatch(modalActions.modalShow()),
-        modalClose: () => dispatch(modalActions.modalClose())
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(mapStateToProps)(Checkout);

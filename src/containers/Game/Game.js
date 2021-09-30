@@ -32,22 +32,9 @@ const Game = props => {
     });
 
     //checks if form valid
-    const [formValid, setFormValid] = useState(false);
-    const [modal, setModal] = useState(false);
     const [currentStep, setCurrentStep] = useState(1)
-    const modalShowHandler = () => {
-        console.log('modal show triggered')
-        setModal(true);
-    }
 
-    const modalCloseHandler = () => {
-        setModal(false);
-    }
     const [artist, setArtist] = useState('')
-    const [radio1, setRadio1] = useState('')
-    const [radio1Opt, setRadio1Opt] = useState('')
-    const [radio2, setRadio2] = useState('')
-    const [radio3, setRadio3] = useState('')
 
     //form input handler, triggers when submit form
     const inputHandler = event => {

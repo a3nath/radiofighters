@@ -13,7 +13,6 @@ const Trivia = props => {
     }
     
     let currentStep = props.currStep;
-    let previousButton = null;
     let nextButton = null;
   
     if(currentStep !==3) {
@@ -24,7 +23,7 @@ const Trivia = props => {
 
     return (
         <div className={classes.Trivia}>
-            <img className={classes.artImg} src={props.img}/>
+            <img className={classes.artImg} src={props.img} alt='band image'/>
             <form onSubmit={triviaHandler}>
                 <Question1 quesArr1={[props.trivArr[0]]} step={props.currStep} radioClick={props.radioClick1}/>
                 <Question2 quesArr2={[props.trivArr[1]]} step={props.currStep} radioClick={props.radioClick2}/>
