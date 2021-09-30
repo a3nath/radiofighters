@@ -3,11 +3,8 @@ import { connect } from 'react-redux';
 //import material Ui
 import Button from '@mui/material/Button';
 
-// import Button from  '../../components/UI/Button/Button';
 import Input from '../../components/Input/Input';
 import Trivia from '../../components/Trivia/Trivia';
-// import Modal from '../../components/UI/Modal/Modal';
-// import Score from '../../components/Score/Score';
 import * as artistActions from '../../store/actionCreators/artistActions';
 import * as scoreActions from '../../store/actionCreators/scoreActions';
 import * as questionActions from '../../store/actionCreators/questionActions';
@@ -134,12 +131,6 @@ const Game = props => {
     const radioHandler3 = event => {
         props.quesClick3({optNum: parseInt(event.target.dataset.tag), optValue: event.target.value, ans: artLabel})
     }
-    
-    //need to send option num not value
-    // useEffect(() => {
-    //     props.quesClick1(parseInt(radio1))}
-    //     ,[radio1]
-    // )
 
   const _next = () => {
     let currStep = currentStep
@@ -147,15 +138,8 @@ const Game = props => {
     setCurrentStep(currStep)
   }
     
-//   const _prev = () => {
-//     let currStep = currentStep
-//     currStep = currStep <= 1? 1: currStep - 1
-//     setCurrentStep(currStep)
-//   }
     if (artistForm.value === ''){
         props.artLoad()
-        // errModal = <ArtistError errMess={props.error.error}/>
-        // props.artErr("Oopsies")
     }
 
 
@@ -185,7 +169,6 @@ const Game = props => {
         quesAnsArr = [
             [{'question': `What year was ${props.artist.strArtist} formed?`}, {'answer': props.artist.intFormedYear}], 
             [{'question': `When was the album ${albumName} released?`}, {'answer':albumYear }]
-            //,[{'question': 'How many members are in the band?'},{'answer': props.artist.intMembers}]
         ]
         let triviaArr = quesAnsArr.map((quesAns, index) => {
             let [ques, ans] = quesAns
@@ -198,14 +181,6 @@ const Game = props => {
         triviaArr.push([{'num': 3,'text': q3}, shuffleArray( randomBand(artLabel))])
 
         trivia = <Trivia 
-            // albums={props.albums}  
-            // q1={props.ques1} 
-            // q2={props.ques2} 
-            // q3={props.ques3}
-            // quesClicked1={props.quesClick1} 
-            // quesClicked2={props.quesClick2} 
-            // q1Opt={props.ques1Opt}
-            // q2Opt={props.ques2Opt}
             artist={artist} 
             img={props.artist.strArtistClearart ? props.artist.strArtistClearart :  props.artist.strArtistBanner }
             loading={props.loading}
@@ -217,7 +192,6 @@ const Game = props => {
             radioClick3={radioHandler3}
             currStep={currentStep}
             nextBtn = {_next}
-            // prevBtn = {_prev}
         />
     }
 
@@ -228,8 +202,6 @@ const Game = props => {
                 name='artist'
                 id='artist'
                 changed={(event) => inputHandler(event)}
-                //if indicator off (dropdown value not selected otherwise dropdown value from store)
-                // value={props.artistSelected ? props.artistEnter : artistForm.value}
                 value = {artistForm.value}
                 valid={artistForm.valid}
                 touched={artistForm.touched}
@@ -270,11 +242,6 @@ const mapStateToProps = state => {
         //albums object
         albums: state.artistReducer.albums,
         score: state.scoreReducer.score,
-        // ques1: state.questionReducer.question1,
-        // ques2: state.questionReducer.question2,
-        // ques3: state.questionReducer.question3,
-        // ques1Opt: state.questionReducer.ques1Opt,
-        // ques2Opt: state.questionReducer.ques2Opt,
         modal: state.modalReducer.modal
     };
 }
