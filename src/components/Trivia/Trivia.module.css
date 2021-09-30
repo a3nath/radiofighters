@@ -1,16 +1,3 @@
-.Button:hover{
-    background-color:green;
-}
-
-.Button:focus{
-    background-color:red;
-}
-
-.Button:active{
-    background-color: indigo;
-}
-
-
 .Trivia{
     margin: 50px auto;
 }

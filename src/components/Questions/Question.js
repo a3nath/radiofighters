@@ -6,6 +6,10 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '../UI/Button/Button';
 import classes from './Question.module.css'
 import Grid from '@mui/material/Grid';
+import Spinner from '../UI/Spinner/Spinner';
+
+
+
 
 export const Question1 = props => {
     if (props.step !== 1) return null
@@ -36,6 +40,8 @@ export const Question1 = props => {
         })
 }
 
+  
+  
 export const Question2 = props => {
     if (props.step !== 2) return null
         return props.quesArr2.map((quesOpt, index) => {
