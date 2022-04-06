@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;500&display=swap");
 
 body {
   text-align: left;
-  font-family: 'Lora', 'Spectral', 'Serif';
-  background-image: url('./assets/Cassette.png');
-  background-size: cover ;
-  color:#585858;
+  font-family: "Lora", "Spectral", "Serif";
+  background-image: url("./assets/Cassette.png");
+  background-size: 20%;
+  background-repeat: space;
 }
 
-h3{
+h3 {
   margin: 0;
 }
