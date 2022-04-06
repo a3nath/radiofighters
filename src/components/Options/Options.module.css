@@ -4,7 +4,7 @@
 }
 
 .OptionGrid .Option{
-    background-color: #4d4eea;
+    background-color: #549a9a;
     /* color:#585858; */
     color:white;
     border: #d7d7d7
@@ -12,15 +12,15 @@
  
 
 .OptionGrid .Option:hover{
-    background-color:#ade6bb;
+    background-color:#54779a;
 }
 
 .Option:focus{
-    background-color:#ade6bb;
+    background-color:#54779a;
 }
 
 .Option:active{
-    background-color: indigo;
+    background-color: #54779a;
 }
 
 .OptionGrid{
