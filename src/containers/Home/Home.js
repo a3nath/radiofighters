@@ -14,10 +14,12 @@ const Home = props => {
 
     return (
         <div className={classes.Home}>
-            <h1>Welcome to RadioFighters!</h1>
-            <div className='mainSection'>
-                <p>This is  a trivia game to test your knowledge of your favourite band.</p>
-                <p>Click play to get started!</p>
+            <div className={classes.Header}>
+                <h1>RadioFighters</h1>
+            </div>
+            <div className={classes.Start}>
+                <h3>This trivia game tests your knowledge of iconic bands.</h3>
+                <h4>Click play to get started!</h4>
                 <Button variant='contained' onClick={navigatePlay}>Play</Button>
             </div>
         </div>

@@ -205,8 +205,11 @@ const Game = props => {
 
     return (
         <div className={classes.Game}>
-            <h3>Give us your favourite band</h3>
-            <div>
+            <div className={classes.Header}>
+                <h1>RadioFighters</h1>     
+            </div>
+            <div className={classes.Search}>
+                <h3>Search a favourite band</h3>
                 <form onSubmit={artistHandler} className={classes.artForm}>
                     {inputElement}
                     <Button variant='contained' disabled={artistForm.value === '' } type='submit'>Submit</Button>

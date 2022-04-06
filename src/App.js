@@ -22,11 +22,13 @@ const App = props =>  {
     </Switch> 
 
   return (
-    <div>
-      <BrowserRouter>
-          {routes}
-          <Footer/>
-      </BrowserRouter>
+    <div className='App'>
+      <div className='wrapper'>
+        <BrowserRouter>
+            {routes}
+            <Footer/>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
