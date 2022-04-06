@@ -209,7 +209,7 @@ const Game = props => {
             <div>
                 <form onSubmit={artistHandler} className={classes.artForm}>
                     {inputElement}
-                    <Button variant='contained' disabled={artistForm.value === '' }>Submit</Button>
+                    <Button variant='contained' disabled={artistForm.value === '' } type='submit'>Submit</Button>
                 </form>
                 {trivia}
                 {errModal}
