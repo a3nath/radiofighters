@@ -9,7 +9,7 @@
 .Header{
     background-color: #549a9a;
     padding: 20px;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 36px;
     color: aliceblue;
 }
@@ -21,7 +21,7 @@
 
 @media (min-width: 1400px){
     .Home{
-        margin: 200px 400px;
+        margin: 200px 100px;
     }
     .Start{
         padding: 100px 0px;
@@ -30,7 +30,7 @@
 
 @media (max-width: 1400px){
     .Home{
-        margin: 100px 200px;
+        margin: 100px 0;
     }
     .Start{
         padding: 50px 0px;
@@ -39,7 +39,7 @@
 
 @media (max-width: 800px){
     .Home{
-        margin: 100px 50px;
+        margin: 100px 0;
     }
     .Start{
         padding: 50px 20px;
@@ -51,7 +51,7 @@
 
 @media (max-width: 450px){
     .Home{
-        margin: 50px 40px;
+        margin: 50px 0;
     }
     .Start{
         padding: 50px 10px;   

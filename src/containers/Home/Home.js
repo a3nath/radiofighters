@@ -18,7 +18,7 @@ const Home = props => {
                 <h1>RadioFighters</h1>
             </div>
             <div className={classes.Start}>
-                <h3>This trivia game tests your knowledge of iconic bands.</h3>
+                <h3>Test your knowledge of iconic music bands</h3>
                 <h4>Click play to get started!</h4>
                 <Button variant='contained' onClick={navigatePlay}>Play</Button>
             </div>

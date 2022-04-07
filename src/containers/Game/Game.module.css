@@ -9,7 +9,7 @@
 .Header{
     background-color: #549a9a;
     padding: 20px;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Chakra Petch', sans-serif;
     color: aliceblue;
 }
 
@@ -21,9 +21,6 @@
 h3{
     margin: 10px 0;
 }
-
-
-
 
 .artForm{
     margin: 0 auto;

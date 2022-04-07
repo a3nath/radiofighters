@@ -23,7 +23,7 @@ const App = props =>  {
 
   return (
     <div className='App'>
-      <div className='wrapper'>
+      <div className='container'>
         <BrowserRouter>
             {routes}
             <Footer/>
