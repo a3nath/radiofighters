@@ -30,7 +30,7 @@ h3{
 
 @media (min-width: 1400px){
     .Game{
-        margin: 200px 400px;
+        margin: 200px;
     }
     .Search{
         padding: 100px 0px;
@@ -39,7 +39,7 @@ h3{
 
 @media (max-width: 1400px){
     .Game{
-        margin: 100px 200px;
+        margin: 100px;
     }
     .Search{
         padding: 50px 0px;
@@ -48,7 +48,7 @@ h3{
 
 @media (max-width: 800px){
     .Game{
-        margin: 100px 50px;
+        margin: 100px;
     }
     .Search{
         padding: 20px 20px;
@@ -60,7 +60,7 @@ h3{
 
 @media (max-width: 450px){
     .Game{
-        margin: 50px 40px;
+        margin: 50px;
     }
     .Search{
         padding: 20px;   
