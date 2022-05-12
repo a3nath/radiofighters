@@ -1,7 +1,8 @@
 
 .Checkout{
     text-align: center;
-    margin: 200px 400px;
+    margin-top: calc(25vh);
+    margin-bottom: calc(25vh);
     background-color: #fdfdfd;
     padding: 50px 0px;
     border-radius: 1%;

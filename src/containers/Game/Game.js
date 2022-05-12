@@ -22,7 +22,7 @@ const Game = props => {
             elementType:'input',
             elementConfig:{
                 type:'text',
-                placeholder:'Your favourite band'
+                placeholder:'Radiohead'
             },
             validation:{
                 required:true
@@ -209,7 +209,7 @@ const Game = props => {
                 <h1>RadioFighters</h1>     
             </div>
             <div className={classes.Search}>
-                <h3>Search band</h3>
+                <h3>Search your favourite band</h3>
                 <form onSubmit={artistHandler} className={classes.artForm}>
                     {inputElement}
                     <Button variant='contained' disabled={artistForm.value === '' } type='submit'>Submit</Button>

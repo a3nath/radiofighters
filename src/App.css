@@ -6,9 +6,9 @@
 body {
   text-align: left;
   font-family: "Roboto", sans-serif;
-  background-image: url("./assets/Cassette.png");
+  background-image: url("./assets/Casette1.png");
   background-size: 20%;
-  background-repeat: space;
+  background-repeat: repeat;
   color: #4c4c4c;
 }
 

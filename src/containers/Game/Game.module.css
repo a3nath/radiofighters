@@ -60,7 +60,7 @@ h3{
 
 @media (max-width: 450px){
     .Game{
-        margin: 50px;
+        margin: 50px 0;
     }
     .Search{
         padding: 20px;   

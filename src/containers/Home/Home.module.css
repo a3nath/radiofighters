@@ -1,9 +1,9 @@
 
 .Home{
     text-align: center;
-    margin: 100px 400px;
     border-radius: 1%;
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
+    margin-top: calc(15vh);
 }
 
 .Header{
@@ -21,7 +21,7 @@
 
 @media (min-width: 1400px){
     .Home{
-        margin: 200px 100px;
+        margin: 200px;
     }
     .Start{
         padding: 100px 0px;
@@ -29,18 +29,12 @@
 }
 
 @media (max-width: 1400px){
-    .Home{
-        margin: 100px 0;
-    }
     .Start{
         padding: 50px 0px;
     }
 }
 
 @media (max-width: 800px){
-    .Home{
-        margin: 100px 0;
-    }
     .Start{
         padding: 50px 20px;
     }
@@ -50,9 +44,6 @@
 }
 
 @media (max-width: 450px){
-    .Home{
-        margin: 50px 0;
-    }
     .Start{
         padding: 50px 10px;   
     }
