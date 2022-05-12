@@ -19,3 +19,10 @@
     margin: 20px 0;
 }
 
+@media (min-width: 1200px){
+    .Checkout{
+        margin-left: calc(5vw);
+        margin-right: calc(5vw);
+    }
+}
+

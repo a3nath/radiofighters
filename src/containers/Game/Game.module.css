@@ -1,9 +1,9 @@
 .Game{
     text-align: center;
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
-    margin: 100px 400px;
     border-radius: 1%;
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
+    margin: calc(15vh) calc(10vw);
 }
 
 .Header{
@@ -29,26 +29,28 @@ h3{
 
 
 @media (min-width: 1400px){
-    .Game{
-        margin: 200px;
-    }
     .Search{
         padding: 100px 0px;
     }
 }
 
 @media (max-width: 1400px){
-    .Game{
-        margin: 100px;
-    }
     .Search{
         padding: 50px 0px;
     }
 }
 
-@media (max-width: 800px){
+@media (max-width: 950px){
     .Game{
-        margin: 100px;
+        margin-left: calc(5vw);
+        margin-right: calc(5vw);
+    }
+}
+
+@media (max-width: 750px){
+    .Game{
+        margin-left: calc(2vw);
+        margin-right: calc(2vw);
     }
     .Search{
         padding: 20px 20px;
@@ -58,10 +60,11 @@ h3{
     }
 }
 
+
 @media (max-width: 450px){
-    .Game{
+    /* .Game{
         margin: 50px 0;
-    }
+    } */
     .Search{
         padding: 20px;   
     }
