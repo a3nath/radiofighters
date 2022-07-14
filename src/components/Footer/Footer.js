@@ -18,7 +18,7 @@ const Footer = props => {
                 <IconButton>
                     <FontAwesomeIcon icon={faHeart} color='maroon'/>
                 </IconButton>
-                    by <a href='https://github.com/a3nath'> Amar Nath</a>
+                    by <a href='https://www.amarnath.dev/'> Amar Nath</a>
             </Toolbar>
         </Box>
         )
