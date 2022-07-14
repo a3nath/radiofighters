@@ -13,6 +13,8 @@ import ArtistError from '../../components/ArtistError/ArtistError';
 import { Link } from 'react-router-dom';
 import classes from './Game.module.css';
 import '../../App.css';
+import Spinner from '../../components/UI/Spinner/Spinner';
+
 
 
 const Game = props => {
@@ -125,6 +127,13 @@ const Game = props => {
     setCurrentStep(currStep)
   }
     
+    let quesAnsArr = [];
+    let trivia = null;
+    let album = {}
+    let albumName = ''
+    let albumYear = 0
+    let artLabel = ''
+
     if (artistForm.value === ''){
         props.artLoad()
     }
@@ -136,12 +145,13 @@ const Game = props => {
         errModal = <ArtistError errMess={props.error.error}/>
     }
 
-    let quesAnsArr = [];
-    let trivia = null;
-    let album = {}
-    let albumName = ''
-    let albumYear = 0
-    let artLabel = ''
+    if (artistForm.value !== '' && !props.error){
+        trivia = <Spinner/>
+    }
+
+    
+
+ 
 
     if (props.artist && props.albums) {
          
